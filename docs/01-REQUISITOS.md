@@ -12,6 +12,7 @@
 ## Histórico de alterações
 
 * [x] **2026-08-27** — Objetivo do sistema, escopo inicial, pesquisa, interface, histórico e fora do escopo definidos no Prompt 002.
+* [x] **2026-08-27** — Prompt 003 executado. Formalizada a regra de significado de `[X]` (definido/aprovado) e `[ ]` (pendente). Verificada e corrigida a classificação dos checklists em todos os documentos da pasta `docs/`. O histórico do Prompt 002 foi preservado. O arquivo `docs/prompts/002-objetivo-e-escopo.md` recebeu anotação de correção para rastreabilidade.
 
 ## Objetivo do sistema
 

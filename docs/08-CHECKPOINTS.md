@@ -5,7 +5,12 @@
 
 ## Histórico de alterações
 
-* [ ] (inserir aqui, quando houver, alterações posteriores de checkpoints)
+* [x] **2026-08-27** — Estrutura inicial de checkpoints criada no Prompt 001.
+* [x] **2026-08-27** — Prompt 003 executado. Formalizada a regra de significado de `[X]` (definido/aprovado) e `[ ]` (pendente). Corrigida a classificação dos checklists sem apagar o histórico do Prompt 002. O arquivo `docs/prompts/002-objetivo-e-escopo.md` permanece preservado por motivos de rastreabilidade.
+
+## Checkpoints concluídos
+
+* [x] Prompt 003 — Correção da classificação dos checklists — **2026-08-27**
 
 ## Checkpoints
 
