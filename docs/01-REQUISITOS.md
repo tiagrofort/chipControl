@@ -13,6 +13,7 @@
 
 * [x] **2026-08-27** — Objetivo do sistema, escopo inicial, pesquisa, interface, histórico e fora do escopo definidos no Prompt 002.
 * [x] **2026-08-27** — Prompt 003 executado. Formalizada a regra de significado de `[X]` (definido/aprovado) e `[ ]` (pendente). Verificada e corrigida a classificação dos checklists em todos os documentos da pasta `docs/`. O histórico do Prompt 002 foi preservado. O arquivo `docs/prompts/002-objetivo-e-escopo.md` recebeu anotação de correção para rastreabilidade.
+* [x] **2026-08-27** — Prompt 004 executado. Definida a estrutura inicial dos cadastros (Usuários do sistema, Funcionários, Operadoras, SIMCARDs, Aparelhos), com as decisões já confirmadas registradas por cadastro. As listas de campos de cada cadastro e os status do SIMCARD permanecem pendentes. Criado o backlog permanente `docs/09-BACKLOG-FUTURO.md` (fora do escopo atual).
 
 ## Objetivo do sistema
 
@@ -52,6 +53,70 @@ O sistema também deve representar situações em que o SIMCARD físico não est
 * [x] Aparelhos.
 
 > Funcionários e usuários do sistema são entidades diferentes.
+
+> Os cinco cadastros são independentes entre si.
+
+#### Usuários do sistema
+
+Decisões já definidas:
+
+* [x] Usuário do sistema é independente de funcionário.
+* [x] O login utiliza nome de usuário.
+* [x] E-mail não é utilizado como nome de usuário.
+* [x] E-mail poderá ser utilizado para recuperação de senha.
+
+Campos (definição pendente — não inventar campos):
+
+* [ ] Definir a lista completa de campos do cadastro de usuários do sistema.
+
+#### Funcionários
+
+Decisões já definidas:
+
+* [x] O cadastro de funcionários é independente do cadastro de usuários do sistema.
+
+Campos (definição pendente — não inventar campos):
+
+* [ ] Definir a lista completa de campos do cadastro de funcionários.
+
+#### Operadoras
+
+Decisões já definidas:
+
+* [x] O cadastro de operadoras de telefonia é independente dos demais cadastros.
+
+Campos (definição pendente — não inventar campos):
+
+* [ ] Definir a lista completa de campos do cadastro de operadoras.
+
+#### SIMCARDs
+
+Decisões já definidas:
+
+* [x] O SIMCARD possui identificação interna do chip físico (ex.: Chip 01, Chip 02, Chip 03).
+* [x] A identificação interna corresponde à numeração escrita fisicamente no chip.
+* [x] O SIMCARD possui ICCID/SIMCARD (informação fundamental do cadastro).
+* [x] O SIMCARD possui uma operadora relacionada.
+* [x] O SIMCARD deve manter histórico (ver seções Controle de SIMCARD e Histórico).
+* [x] Um SIMCARD não deve ser excluído simplesmente porque deixou de ser utilizado.
+
+Campos e status (definição pendente — os demais campos e status não foram definidos neste momento):
+
+* [ ] Definir a lista completa de campos do cadastro de SIMCARDs.
+* [ ] Definir os estados/status do SIMCARD.
+
+#### Aparelhos
+
+Decisões já definidas:
+
+* [x] Um aparelho pode pertencer à empresa.
+* [x] Um aparelho pode pertencer ao funcionário.
+* [x] O proprietário do aparelho é independente do usuário da linha.
+* [x] Um aparelho pode estar relacionado à utilização de uma linha.
+
+Campos (definição pendente — não inventar campos):
+
+* [ ] Definir a lista completa de campos do cadastro de aparelhos.
 
 ### Controle de SIMCARD
 
