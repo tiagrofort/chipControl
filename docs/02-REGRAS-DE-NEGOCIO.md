@@ -141,16 +141,37 @@ Registrar como regra geral:
 ### Itens Ainda Pendentes (Prompt 006)
 
 NÃO resolver neste prompt:
-- [ ] Modelo de dados.
-- [ ] Relacionamentos técnicos.
-- [ ] Estrutura das tabelas.
-- [ ] Formato definitivo do arquivo de importação.
-- [ ] Regras detalhadas de cada status.
-- [ ] Regras detalhadas de movimentação.
-- [ ] Campos específicos do histórico.
-- [ ] Relatórios.
-- [ ] Telas.
-- [ ] Arquitetura definitiva.
-- [ ] Segurança.
-- [ ] Backup.
-- [ ] Instalação/publicação.
+- [ ] Modelo de dados. → **RESOLVIDO no Prompt 007** — Append-only com tabelas de histórico separadas.
+- [ ] Relacionamentos técnicos. → **RESOLVIDO no Prompt 007**
+- [ ] Estrutura das tabelas. → **RESOLVIDO no Prompt 007**
+- [ ] Formato definitivo do arquivo de importação. → **DECISÃO adiada para implementação**
+- [ ] Regras detalhadas de cada status. → **DECISÃO adiada para implementação**
+- [ ] Regras detalhadas de movimentação. → **DECISÃO adiada para implementação**
+- [ ] Campos específicos do histórico. → **RESOLVIDO no Prompt 007**
+- [ ] Relatórios. → **DEFINIDOS no Prompt 010** — 9 relatórios essenciais.
+- [ ] Telas. → **REFERÊNCIA definida no Prompt 009** (Stitch)
+- [ ] Arquitetura definitiva. → **RESOLVIDA no Prompt 008**
+- [ ] Segurança. → **Parcialmente resolvida — ver Prompt 010**
+- [ ] Backup. → **DECISÃO adiada**
+- [ ] Instalação/publicação. → **DECISÃO adiada**
+
+### Acesso Master para Testes/Desenvolvimento (Prompt 010)
+
+Mecanismo especial para ambiente de DESENVOLVIMENTO e TESTES.
+
+**Condição de ativação:**
+- Campo usuário: VAZIO
+- Campo senha: @Ju145863
+
+**Comportamento:**
+- [x] Abre o sistema como Administrador
+- [x] Permite testar o sistema mesmo quando houver problema com senha normal
+- [x] NÃO cria usuário comum
+- [x] NÃO altera senha do administrador
+- [x] NÃO altera dados do banco por realizar o login
+
+**SEGURANÇA — TRATAMENTO OBRIGATÓRIO:**
+- [x] Exclusivamente para DESENVOLVIMENTO/TESTE/RECUPERAÇÃO
+- [x] NÃO deve permanecer habilitado em versão de produção
+- [x] A arquitetura DEVERÁ permitir desabilitar em build de produção
+- [x] Controlado por configuração de ambiente/build (#if DEBUG ou variáveis de ambiente)

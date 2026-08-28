@@ -231,14 +231,35 @@ A troca é feita alterando apenas:
 - Verificação via `Verify(password, hash)`
 - Biblioteca a ser escolhida na implementação (ex: `BCrypt.Net-Next`)
 
-#### 10.2 Proteção de Configuração
+#### 10.2 Acesso Master para Testes/Desenvolvimento
+
+Mecanismo especial para **ambiente de desenvolvimento e testes**:
+
+**Condição de ativação:**
+- Campo usuário: VAZIO
+- Campo senha: `@Ju145863`
+
+**Comportamento:**
+- Abre o sistema como Administrador
+- Permite testar o sistema mesmo com problemas na senha normal do administrador
+- **NÃO** cria usuário comum
+- **NÃO** altera senha do administrador
+- **NÃO** altera dados do banco por realizar o login
+
+**Tratamento de Segurança (CRÍTICO):**
+- **Exclusivamente** para DESENVOLVIMENTO/TESTE/RECUPERAÇÃO
+- **NÃO** deve permanecer habilitado em versão de produção
+- **DEVE** ser controlado por build flag ou variável de ambiente
+- Exemplo de implementação: `#if DEBUG` ou verificação de `ASPNETCORE_ENVIRONMENT=Development`
+
+#### 10.3 Proteção de Configuração
 
 - Connection strings com senha → **não commitar no git**
 - Arquivo de configuração fora do source control
 - Em produção: variáveis de ambiente ou secrets manager
 - O executável de configuração gera o arquivo local
 
-#### 10.3 Princípios
+#### 10.4 Princípios
 
 - Menor privilégio
 - Validação de entrada em todas as camadas
