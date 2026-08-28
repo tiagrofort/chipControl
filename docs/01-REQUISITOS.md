@@ -15,6 +15,8 @@
 * [x] **2026-08-27** — Prompt 003 executado. Formalizada a regra de significado de `[X]` (definido/aprovado) e `[ ]` (pendente). Verificada e corrigida a classificação dos checklists em todos os documentos da pasta `docs/`. O histórico do Prompt 002 foi preservado. O arquivo `docs/prompts/002-objetivo-e-escopo.md` recebeu anotação de correção para rastreabilidade.
 * [x] **2026-08-27** — Prompt 004 executado. Definida a estrutura inicial dos cadastros (Usuários do sistema, Funcionários, Operadoras, SIMCARDs, Aparelhos), com as decisões já confirmadas registradas por cadastro. As listas de campos de cada cadastro e os status do SIMCARD permanecem pendentes. Criado o backlog permanente `docs/09-BACKLOG-FUTURO.md` (fora do escopo atual).
 * [x] **2026-08-28** — Prompt 005 executado. Consolidou os campos dos cinco cadastros principais (Funcionários, Operadoras, SIMCARDs, Aparelhos, Usuários do Sistema) com todas as decisões já definidas.
+* [x] **2026-08-28** — Prompt 006 executado. Documentadas as regras fundamentais de histórico e movimentação: princípio de preservação do histórico, ciclo de vida do SIMCARD, regras de números telefônicos, troca de números por importação, substituição de SIMCARD, troca simultânea de SIMCARD e número, histórico de funcionários, histórico de aparelhos, regras de WhatsApp, cadastro rápido, operações que preservam histórico.
+* [x] **2026-08-28** — Prompt 007 executado. Definido o modelo conceitual de dados com 8 tabelas (UsuariosSistema, Funcionarios, Operadoras, SIMCards, Aparelhos, HistoricoNumeros, HistoricoUtilizacao, HistoricoSubstituicao), campos, chaves, relacionamentos, histórico, integridade e observações. Compatível com SQLite (inicial) e preparado para PostgreSQL/MySQL futuramente.
 
 ## Objetivo do sistema
 
