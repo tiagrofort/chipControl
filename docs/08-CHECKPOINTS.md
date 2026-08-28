@@ -12,6 +12,7 @@
 * [x] **2026-08-28** — Prompt 006 executado. Documentadas as regras fundamentais de histórico e movimentação: princípio de preservação do histórico, ciclo de vida do SIMCARD, regras de números telefônicos, troca de números por importação, substituição de SIMCARD, troca simultânea de SIMCARD e número, histórico de funcionários, histórico de aparelhos, regras de WhatsApp, cadastro rápido, operações que preservam histórico. Itens pendentes preservados.
 * [x] **2026-08-28** — Prompt 007 executado. Definido o modelo conceitual de dados com 8 tabelas, campos, chaves, relacionamentos, histórico, integridade e observações. Compatível com SQLite (inicial) e preparado para PostgreSQL/MySQL futuramente.
 * [x] **2026-08-28** — Prompt 008 executado. Definida a arquitetura técnica completa: WPF + C#, arquitetura em camadas (Presentation/Application/Domain/Infrastructure/Persistence), SQLite inicial com suporte futuro para PostgreSQL/MySQL, executável separado de configuração do banco, autenticação posicionada, segurança de senha, logging, tratamento de erros.
+* [x] **2026-08-28** — Prompt 009 executado. UX Design já existente do Google Stitch registrado como referência visual para implementação WPF. Design incorporado sem recriação. Interface documentada com layout de menu lateral, área de ações, grids, modais, pesquisa e cadastro rápido.
 
 ## Checkpoints concluídos
 
@@ -21,6 +22,7 @@
 * [x] Prompt 006 — Regras de negócio e histórico — **2026-08-28**
 * [x] Prompt 007 — Modelo de dados — **2026-08-28**
 * [x] Prompt 008 — Arquitetura do sistema — **2026-08-28**
+* [x] Prompt 009 — Registro do UX Design existente (Google Stitch) — **2026-08-28**
 
 ## Checkpoints
 
@@ -77,3 +79,13 @@
 - [x] Nenhum código criado.
 - [x] Tratamento de erros e logging definidos conceitualmente.
 - [x] Compatibilidade SQLite/PostgreSQL/MySQL considerada.
+
+### Prompt 009 — Registro do UX Design existente (Google Stitch) — 2026-08-28
+
+- [x] Prompt 009 executado.
+- [x] Design existente do Google Stitch incorporado/referenciado.
+- [x] Interface documentada.
+- [x] Design definido como referência para WPF.
+- [x] Nenhuma funcionalidade nova adicionada.
+- [x] Nenhum código criado.
+- [x] Telas/fluxos identificados: troca de números, substituição de SIMCARD, menu lateral, grids, modais, pesquisa, cadastro rápido relacionado.
