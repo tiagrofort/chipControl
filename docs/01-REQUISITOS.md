@@ -14,6 +14,7 @@
 * [x] **2026-08-27** — Objetivo do sistema, escopo inicial, pesquisa, interface, histórico e fora do escopo definidos no Prompt 002.
 * [x] **2026-08-27** — Prompt 003 executado. Formalizada a regra de significado de `[X]` (definido/aprovado) e `[ ]` (pendente). Verificada e corrigida a classificação dos checklists em todos os documentos da pasta `docs/`. O histórico do Prompt 002 foi preservado. O arquivo `docs/prompts/002-objetivo-e-escopo.md` recebeu anotação de correção para rastreabilidade.
 * [x] **2026-08-27** — Prompt 004 executado. Definida a estrutura inicial dos cadastros (Usuários do sistema, Funcionários, Operadoras, SIMCARDs, Aparelhos), com as decisões já confirmadas registradas por cadastro. As listas de campos de cada cadastro e os status do SIMCARD permanecem pendentes. Criado o backlog permanente `docs/09-BACKLOG-FUTURO.md` (fora do escopo atual).
+* [x] **2026-08-28** — Prompt 005 executado. Consolidou os campos dos cinco cadastros principais (Funcionários, Operadoras, SIMCARDs, Aparelhos, Usuários do Sistema) com todas as decisões já definidas.
 
 ## Objetivo do sistema
 
@@ -65,9 +66,18 @@ Decisões já definidas:
 * [x] E-mail não é utilizado como nome de usuário.
 * [x] E-mail poderá ser utilizado para recuperação de senha.
 
-Campos (definição pendente — não inventar campos):
+Campos (definidos no Prompt 005):
 
-* [ ] Definir a lista completa de campos do cadastro de usuários do sistema.
+- [x] ID — automático.
+- [x] Nome — obrigatório.
+- [x] Nome de usuário/login — obrigatório.
+- [x] Senha — obrigatória.
+- [x] E-mail — opcional.
+- [x] Nível de acesso — obrigatório.
+- [x] Ativo — obrigatório.
+- [x] Observações — opcional.
+
+> Observação: o Prompt 005 não definiu permissões detalhadas de Administrador e Usuário.
 
 #### Funcionários
 
@@ -75,9 +85,23 @@ Decisões já definidas:
 
 * [x] O cadastro de funcionários é independente do cadastro de usuários do sistema.
 
-Campos (definição pendente — não inventar campos):
+Campos (definidos no Prompt 005):
 
-* [ ] Definir a lista completa de campos do cadastro de funcionários.
+- [x] ID — automático.
+- [x] Nome completo — obrigatório.
+- [x] Matrícula — opcional.
+- [x] Setor — obrigatório.
+- [x] Cargo — opcional.
+- [x] Telefone pessoal — opcional.
+- [x] E-mail — opcional.
+- [x] Ativo — obrigatório.
+- [x] Observações — opcional.
+
+Decisões adicionais (Prompt 005):
+
+- [x] Funcionário é independente de Usuário do Sistema.
+- [x] Funcionário não deve ser excluído apenas por deixar de trabalhar na empresa.
+- [x] Funcionário pode ficar inativo para preservar seu histórico.
 
 #### Operadoras
 
@@ -85,9 +109,22 @@ Decisões já definidas:
 
 * [x] O cadastro de operadoras de telefonia é independente dos demais cadastros.
 
-Campos (definição pendente — não inventar campos):
+Campos (definidos no Prompt 005):
 
-* [ ] Definir a lista completa de campos do cadastro de operadoras.
+- [x] ID — automático.
+- [x] Nome — obrigatório.
+- [x] Código/identificação — opcional.
+- [x] CNPJ — opcional.
+- [x] Telefone/contato — opcional.
+- [x] E-mail — opcional.
+- [x] Ativo — obrigatório.
+- [x] Observações — opcional.
+
+Decisões adicionais (Prompt 005):
+
+- [x] Operadora é um cadastro independente.
+- [x] Operadora utilizada em históricos não deve ser excluída apenas por deixar de ser utilizada.
+- [x] Operadora poderá ficar inativa.
 
 #### SIMCARDs
 
@@ -100,10 +137,43 @@ Decisões já definidas:
 * [x] O SIMCARD deve manter histórico (ver seções Controle de SIMCARD e Histórico).
 * [x] Um SIMCARD não deve ser excluído simplesmente porque deixou de ser utilizado.
 
-Campos e status (definição pendente — os demais campos e status não foram definidos neste momento):
+Campos (definidos no Prompt 005):
 
-* [ ] Definir a lista completa de campos do cadastro de SIMCARDs.
-* [ ] Definir os estados/status do SIMCARD.
+- [x] ID — automático.
+- [x] Identificação do chip — obrigatória.
+- [x] ICCID — obrigatório.
+- [x] Operadora — obrigatória.
+- [x] Plano/tipo de linha — opcional.
+- [x] DDD — opcional.
+- [x] Data de aquisição — opcional.
+- [x] Data de ativação — opcional.
+- [x] Observações — opcional.
+- [x] Status — obrigatório.
+
+Status do SIMCARD (definidos no Prompt 005):
+
+- [x] Em estoque
+- [x] Em uso particular
+- [x] WhatsApp
+- [x] Danificado
+- [x] Perdido
+- [x] Não devolvido
+- [x] Descartado
+- [x] Inativo
+
+Definições de status (Prompt 005):
+
+- "Em estoque": O SIMCARD está fisicamente disponível no estoque.
+- "Em uso particular": O SIMCARD está fisicamente no celular utilizado pelo usuário.
+- "WhatsApp": A linha continua sendo utilizada para WhatsApp, mesmo que o SIMCARD físico tenha retornado ao estoque após a configuração.
+
+Decisões adicionais (Prompt 005):
+
+- [x] O ICCID identifica o SIMCARD físico.
+- [x] O SIMCARD deve possuir histórico.
+- [x] Um SIMCARD que deixou de ser utilizado não deve ter seu histórico apagado.
+
+> Observação: a estrutura técnica do plano/tipo de linha ainda NÃO está definida. Não criar tabelas nem campos adicionais. Não decidir se plano será cadastro separado ou campos do SIMCARD.
 
 #### Aparelhos
 
@@ -114,9 +184,57 @@ Decisões já definidas:
 * [x] O proprietário do aparelho é independente do usuário da linha.
 * [x] Um aparelho pode estar relacionado à utilização de uma linha.
 
-Campos (definição pendente — não inventar campos):
+Campos (definidos no Prompt 005):
 
-* [ ] Definir a lista completa de campos do cadastro de aparelhos.
+- [x] ID — automático.
+- [x] Identificação do aparelho — obrigatória.
+- [x] Tipo — obrigatório.
+- [x] Marca — opcional.
+- [x] Modelo — opcional.
+- [x] IMEI 1 — opcional.
+- [x] IMEI 2 — opcional.
+- [x] Proprietário — obrigatório.
+- [x] Funcionário proprietário — aplicável quando o proprietário for funcionário.
+- [x] Observações — opcional.
+- [x] Ativo — obrigatório.
+
+Decisões adicionais (Prompt 005):
+
+- [x] O aparelho pode pertencer à empresa.
+- [x] O aparelho pode pertencer a um funcionário.
+- [x] Proprietário do aparelho é diferente do usuário da linha.
+- [x] O usuário de uma linha não deve ser tratado automaticamente como proprietário do aparelho.
+- [x] Um aparelho pode mudar de usuário sem mudar de proprietário.
+- [x] Aparelho utilizado em histórico não deve ser excluído apenas porque deixou de ser utilizado.
+
+#### Seleção de Funcionários (regra documentada no Prompt 005)
+
+- [x] Funcionário relacionado ao aparelho não será digitado manualmente como texto.
+- [x] O funcionário deverá ser selecionado a partir do cadastro de Funcionários.
+- [x] O sistema deverá permitir pesquisar funcionários existentes.
+- [x] Se o funcionário não existir, deverá existir uma opção para cadastrá-lo sem sair do formulário atual.
+- [x] Depois do cadastro rápido, o formulário original deverá ser retomado.
+- [x] Os dados já preenchidos no formulário original deverão ser preservados.
+- [x] O novo funcionário deverá ficar disponível para seleção.
+
+> Observação: essa regra deverá posteriormente ser generalizada para outros cadastros relacionados. Não implementar agora.
+
+#### Plano/Tipo de Linha (decisão documentada no Prompt 005)
+
+- [x] O cadastro do SIMCARD deverá permitir registrar o plano/tipo de linha.
+- [x] Deverá ser possível registrar se existe minutagem ativa.
+- [x] Quando houver minutagem, deverá ser possível registrar sua quantidade.
+- [x] Deverá ser possível registrar se existe franquia de internet.
+- [x] Quando houver internet, deverá ser possível registrar sua quantidade.
+
+> Observação: a estrutura técnica do plano/tipo de linha ainda NÃO está definida. Não criar tabelas nem campos adicionais. Não decidir se plano será cadastro separado ou campos do SIMCARD.
+
+#### Regra Geral sobre Campos (documentada no Prompt 005)
+
+- [x] Campos somente devem ser obrigatórios quando realmente necessários.
+- [x] Informações complementares devem ser opcionais.
+- [x] Campos relacionados a outros cadastros devem utilizar registros existentes, e não nomes digitados livremente.
+- [x] Deve existir mecanismo de cadastro rápido para registros relacionados.
 
 ### Controle de SIMCARD
 
