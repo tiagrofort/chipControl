@@ -14,6 +14,7 @@
 * [x] **2026-08-28** — Prompt 008 executado. Definida a arquitetura técnica completa: WPF + C#, arquitetura em camadas (Presentation/Application/Domain/Infrastructure/Persistence), SQLite inicial com suporte futuro para PostgreSQL/MySQL, executável separado de configuração do banco, autenticação posicionada, segurança de senha, logging, tratamento de erros.
 * [x] **2026-08-28** — Prompt 009 executado. UX Design já existente do Google Stitch registrado como referência visual para implementação WPF. Design incorporado sem recriação. Interface documentada com layout de menu lateral, área de ações, grids, modais, pesquisa e cadastro rápido.
 * [x] **2026-08-28** — Prompt 010 executado. Revisão final e congelamento da especificação. Decisões finais sobre modelo de histórico, relação SIMCARD/números, fluxo de troca de números, fluxo de substituição de SIMCARD, utilização/estoque, cadastro rápido, autenticação, acesso master de testes, estratégia de banco, relatórios essenciais e interface. Especificação considerada CONGELADA para início da codificação.
+* [x] **2026-08-28** — Prompt 011 executado. Fechamento final pré-codificação: revisão estrutural final, UX Design (docs/ux_design/ e docs/ux_design.zip) versionado no Git, modelo de histórico e relação SIMCARD/número fechados, fluxo de troca de números e substituição fechados, formato de importação EXCEL (.xlsx), autenticação e acesso master documentados, banco inicial/futuro definido, relatórios da primeira versão confirmados e projeto congelado para início da codificação. Artefato residual `docs/prompts/002_objetivo_e_escopo.ps1` removido.
 
 ## Checkpoints concluídos
 
@@ -25,6 +26,7 @@
 * [x] Prompt 008 — Arquitetura do sistema — **2026-08-28**
 * [x] Prompt 009 — Registro do UX Design existente (Google Stitch) — **2026-08-28**
 * [x] Prompt 010 — Revisão final e congelamento da especificação — **2026-08-28**
+* [x] Prompt 011 — Fechamento final pré-codificação — **2026-08-28**
 
 ## Checkpoints
 
@@ -91,3 +93,18 @@
 - [x] Nenhuma funcionalidade nova adicionada.
 - [x] Nenhum código criado.
 - [x] Telas/fluxos identificados: troca de números, substituição de SIMCARD, menu lateral, grids, modais, pesquisa, cadastro rápido relacionado.
+
+### Prompt 011 — Fechamento Final Pré-Codificação — 2026-08-28
+
+- [x] Revisão estrutural final concluída.
+- [x] UX Design versionado.
+- [x] Modelo de histórico fechado.
+- [x] Relação SIMCARD/número fechada.
+- [x] Fluxo de troca de números fechado.
+- [x] Fluxo de substituição fechado.
+- [x] Autenticação fechada.
+- [x] Acesso master de testes documentado.
+- [x] Banco inicial/futuro definido.
+- [x] Relatórios da primeira versão definidos.
+- [x] Especificação pronta para implementação.
+- [x] Projeto congelado para início da codificação.

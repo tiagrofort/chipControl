@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Substituição de SIMCARD - Controle de Chips</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Work Sans', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed-dim": "#c9c6c4",
+                        "secondary-fixed": "#e6e2df",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#b1d1ff",
+                        "tertiary": "#404140",
+                        "surface-container-highest": "#e1e2e8",
+                        "surface-tint": "#1260a5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#1c1b1a",
+                        "inverse-surface": "#2e3035",
+                        "surface": "#f8f9ff",
+                        "secondary": "#605e5c",
+                        "outline": "#727782",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#575858",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#e1e2e8",
+                        "surface-container-high": "#e7e8ee",
+                        "surface-dim": "#d8dae0",
+                        "on-secondary-container": "#666462",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "surface-container-low": "#f2f3fa",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#191c20",
+                        "outline-variant": "#c1c7d2",
+                        "on-surface-variant": "#414750",
+                        "on-error": "#ffffff",
+                        "primary-container": "#005a9e",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eff0f7",
+                        "primary-fixed-dim": "#a2c9ff",
+                        "primary-fixed": "#d3e4ff",
+                        "on-secondary-fixed-variant": "#484645",
+                        "primary": "#004277",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e3e2e1",
+                        "surface-container": "#ecedf4",
+                        "on-tertiary-container": "#cfcecd",
+                        "on-primary-fixed": "#001c38",
+                        "on-primary-fixed-variant": "#004881",
+                        "secondary-container": "#e6e2df",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "inverse-primary": "#a2c9ff",
+                        "on-background": "#191c20"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "stack_md": "16px",
+                        "stack_sm": "8px",
+                        "gutter": "16px",
+                        "sidebar_width": "240px",
+                        "grid_row_height": "40px",
+                        "margin_page": "24px",
+                        "header_height": "64px"
+                    },
+                    fontFamily: {
+                        "headline": ["Work Sans"],
+                        "data-mono": ["JetBrains Mono"],
+                        "title-md": ["Work Sans"],
+                        "label-sm": ["Work Sans"],
+                        "display": ["Work Sans"],
+                        "body-md": ["Work Sans"],
+                        "body-lg": ["Work Sans"]
+                    },
+                    fontSize: {
+                        "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "data-mono": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500" }],
+                        "display": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen overflow-x-hidden">
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface border-r border-outline-variant flex flex-col py-4 z-20">
+<div class="px-6 pb-6">
+<h1 class="font-headline text-headline text-primary">Controle de Chips</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">SIM Management</p>
+</div>
+<nav class="flex-1 overflow-y-auto">
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-6 py-3 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-6 py-3 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">sim_card</span>
+                SIMCARDs
+            </a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-6 py-3 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">phone_iphone</span>
+                Numbers
+            </a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-6 py-3 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">badge</span>
+                Employees
+            </a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-6 py-3 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">devices</span>
+                Devices
+            </a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-6 py-3 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">domain</span>
+                Carriers
+            </a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-6 py-3 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">swap_horiz</span>
+                Number Swap
+            </a>
+<a class="flex items-center gap-3 border-l-4 border-primary bg-secondary-container text-primary font-title-md text-title-md px-6 py-3" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings_backup_restore</span>
+                SIM Replacement
+            </a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-6 py-3 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">assessment</span>
+                Reports
+            </a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-6 py-3 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">group</span>
+                Users
+            </a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-6 py-3 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+                Settings
+            </a>
+</nav>
+</aside>
+<header class="fixed top-0 ml-[240px] w-[calc(100%-240px)] h-[64px] bg-background border-b border-outline-variant flex justify-between items-center px-margin_page z-10">
+<div class="flex items-center">
+<span class="font-headline text-headline font-bold text-on-surface">Controle de Chips</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-size: 20px;">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface border border-outline-variant rounded-full font-body-md text-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Pesquisar..." type="text"/>
+</div>
+<button class="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-lg font-label-sm text-label-sm hover:bg-on-primary-fixed-variant transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+                Add New
+            </button>
+</div>
+</header>
+<main class="ml-[240px] pt-[64px] min-h-screen p-margin_page flex flex-col">
+<div class="mb-stack_md flex items-center justify-between">
+<div>
+<h2 class="font-display text-display text-on-surface">Substituição de SIMCARD</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Transfira a linha para um novo chip físico ou eSIM.</p>
+</div>
+</div>
+<div class="bg-surface border border-outline-variant rounded-xl max-w-4xl shadow-sm flex-1">
+<div class="p-6">
+<div class="mb-8">
+<h3 class="font-title-md text-title-md text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">info</span>
+                        Dados Atuais
+                    </h3>
+<div class="bg-surface-container-low border border-outline-variant/50 rounded-lg p-5 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">SIMCARD Atual (ICCID)</label>
+<div class="font-data-mono text-data-mono text-on-surface bg-surface-variant/30 px-3 py-2 rounded border border-outline-variant/30 select-all cursor-text">
+                                8955 0211 9876 5432 1098
+                            </div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Número Atual (MSISDN)</label>
+<div class="font-body-md text-body-md text-on-surface font-semibold bg-surface-variant/30 px-3 py-2 rounded border border-outline-variant/30">
+                                +55 (11) 98765-4321
+                            </div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Operadora</label>
+<div class="font-body-md text-body-md text-on-surface bg-surface-variant/30 px-3 py-2 rounded border border-outline-variant/30">
+                                Vivo Empresas
+                            </div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Status</label>
+<div class="flex items-center gap-2 bg-surface-variant/30 px-3 py-2 rounded border border-outline-variant/30 w-fit">
+<span class="w-2 h-2 rounded-full bg-[#107C10]"></span>
+<span class="font-body-md text-body-md text-on-surface">Ativo</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mb-8 border-t border-outline-variant/30 pt-6">
+<h3 class="font-title-md text-title-md text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">swap_horiz</span>
+                        Detalhes da Substituição
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="col-span-1 md:col-span-2 max-w-md">
+<label class="block font-label-sm text-label-sm text-on-surface mb-1" for="reason">Motivo da substituição <span class="text-error">*</span></label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface border border-outline-variant text-on-surface font-body-md text-body-md rounded px-3 py-2 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" id="reason">
+<option disabled="" selected="" value="">Selecione um motivo...</option>
+<option value="perda">Perda ou Roubo</option>
+<option value="defeito">Defeito no Chip</option>
+<option value="upgrade">Upgrade de Tecnologia (4G/5G)</option>
+<option value="formato">Troca de Formato (eSIM/Micro/Nano)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">arrow_drop_down</span>
+</div>
+</div>
+<div class="col-span-1 md:col-span-2">
+<label class="block font-label-sm text-label-sm text-on-surface mb-1" for="new_sim">Novo SIMCARD (ICCID) <span class="text-error">*</span></label>
+<div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
+<div class="relative flex-1 w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">qr_code_scanner</span>
+<input class="w-full pl-10 pr-3 py-2 bg-surface border border-outline-variant text-on-surface font-data-mono text-data-mono rounded focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary uppercase" id="new_sim" placeholder="Buscar no estoque ou bipar código..." type="text"/>
+</div>
+<span class="text-on-surface-variant font-body-md text-body-md px-2 hidden sm:block">ou</span>
+<button class="flex items-center justify-center gap-2 border border-primary text-primary px-4 py-2 rounded bg-surface hover:bg-primary-container hover:text-on-primary-container transition-colors font-label-sm text-label-sm w-full sm:w-auto" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px;">add_circle</span>
+                                    Novo Cadastro
+                                </button>
+</div>
+<p class="font-body-md text-body-md text-outline mt-1.5 text-xs">Se o novo chip não estiver no estoque, utilize o 'Novo Cadastro' para inseri-lo rapidamente.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low border-t border-outline-variant p-4 px-6 flex justify-end gap-3 rounded-b-xl">
+<button class="px-5 py-2 rounded border border-outline-variant text-on-surface font-label-sm text-label-sm hover:bg-surface-variant transition-colors" type="button">
+                    Cancelar
+                </button>
+<button class="px-5 py-2 rounded bg-primary text-on-primary font-label-sm text-label-sm hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-2 shadow-sm" type="button">
+<span class="material-symbols-outlined" style="font-size: 18px; font-variation-settings: 'FILL' 1;">save</span>
+                    Substituir
+                </button>
+</div>
+</div>
+</main>
+</body></html>

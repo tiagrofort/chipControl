@@ -6,6 +6,7 @@
 ## Histórico de alterações
 
 * [x] **2026-08-28** — Prompt 008 executado. Definida a arquitetura técnica completa: tecnologias, camadas, responsabilidades, dependências, configuração de banco, executável de configuração, autenticação, segurança, tratamento de erros, compatibilidade multi-SGBD.
+* [x] **2026-08-28** — Prompt 011 executado. Fechamento final pré-codificação. Decisões de arquitetura mantidas sem alteração (SQLite inicial, EF Core, camada de persistência desacoplada). Nenhuma decisão estrutural alterada.
 
 ## Arquitetura
 

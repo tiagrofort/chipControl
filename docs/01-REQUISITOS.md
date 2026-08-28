@@ -17,6 +17,7 @@
 * [x] **2026-08-28** — Prompt 005 executado. Consolidou os campos dos cinco cadastros principais (Funcionários, Operadoras, SIMCARDs, Aparelhos, Usuários do Sistema) com todas as decisões já definidas.
 * [x] **2026-08-28** — Prompt 006 executado. Documentadas as regras fundamentais de histórico e movimentação: princípio de preservação do histórico, ciclo de vida do SIMCARD, regras de números telefônicos, troca de números por importação, substituição de SIMCARD, troca simultânea de SIMCARD e número, histórico de funcionários, histórico de aparelhos, regras de WhatsApp, cadastro rápido, operações que preservam histórico.
 * [x] **2026-08-28** — Prompt 007 executado. Definido o modelo conceitual de dados com 8 tabelas (UsuariosSistema, Funcionarios, Operadoras, SIMCards, Aparelhos, HistoricoNumeros, HistoricoUtilizacao, HistoricoSubstituicao), campos, chaves, relacionamentos, histórico, integridade e observações. Compatível com SQLite (inicial) e preparado para PostgreSQL/MySQL futuramente.
+* [x] **2026-08-28** — Prompt 011 executado. Fechamento final pré-codificação: formato inicial de importação definido (EXCEL .xlsx), relação do modelo de histórico fechada, status do SIMCARD sem mistura conceitual (situação física × utilização da linha), UX Design versionado no Git, congelamento final registrado.
 
 ## Objetivo do sistema
 
@@ -300,6 +301,8 @@ O sistema deverá controlar:
 * [x] Perda, dano ou não devolução não devem apagar o histórico.
 
 > Ainda NÃO definido: modelo das tabelas. Será tratado em docs/03-MODELO-DE-DADOS.md.
+
+> Atualização (Prompt 011): o modelo de dados foi definido no Prompt 007 em `docs/03-MODELO-DE-DADOS.md`. Esta observação foi preservada por rastreabilidade.
 
 ## Fora do escopo neste momento
 

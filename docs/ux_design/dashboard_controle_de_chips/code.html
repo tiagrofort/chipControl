@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Controle de Chips - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c9c6c4",
+                        "secondary-fixed": "#e6e2df",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#b1d1ff",
+                        "tertiary": "#404140",
+                        "surface-container-highest": "#e1e2e8",
+                        "surface-tint": "#1260a5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#1c1b1a",
+                        "inverse-surface": "#2e3035",
+                        "surface": "#f8f9ff",
+                        "secondary": "#605e5c",
+                        "outline": "#727782",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#575858",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#e1e2e8",
+                        "surface-container-high": "#e7e8ee",
+                        "surface-dim": "#d8dae0",
+                        "on-secondary-container": "#666462",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "surface-container-low": "#f2f3fa",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#191c20",
+                        "outline-variant": "#c1c7d2",
+                        "on-surface-variant": "#414750",
+                        "on-error": "#ffffff",
+                        "primary-container": "#005a9e",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eff0f7",
+                        "primary-fixed-dim": "#a2c9ff",
+                        "primary-fixed": "#d3e4ff",
+                        "on-secondary-fixed-variant": "#484645",
+                        "primary": "#004277",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e3e2e1",
+                        "surface-container": "#ecedf4",
+                        "on-tertiary-container": "#cfcecd",
+                        "on-primary-fixed": "#001c38",
+                        "on-primary-fixed-variant": "#004881",
+                        "secondary-container": "#e6e2df",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "inverse-primary": "#a2c9ff",
+                        "on-background": "#191c20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack_md": "16px",
+                        "stack_sm": "8px",
+                        "gutter": "16px",
+                        "sidebar_width": "240px",
+                        "grid_row_height": "40px",
+                        "margin_page": "24px",
+                        "header_height": "64px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Work Sans"],
+                        "data-mono": ["JetBrains Mono"],
+                        "title-md": ["Work Sans"],
+                        "label-sm": ["Work Sans"],
+                        "display": ["Work Sans"],
+                        "body-md": ["Work Sans"],
+                        "body-lg": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "data-mono": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500" }],
+                        "display": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Work Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background flex h-screen overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-surface dark:bg-surface-container-low text-primary dark:text-primary-fixed font-body-md text-body-md fixed left-0 top-0 h-full w-[240px] border-r border-outline-variant dark:border-outline flex flex-col w-[240px] h-full py-4 z-20">
+<div class="px-gutter pb-stack_md">
+<h1 class="font-headline text-headline text-primary dark:text-primary-fixed">Controle de Chips</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">SIM Management</p>
+</div>
+<ul class="flex-1 overflow-y-auto">
+<li>
+<a class="flex items-center gap-3 border-l-4 border-primary bg-secondary-container text-primary font-title-md text-title-md px-gutter py-2 cursor-pointer active:opacity-80 transition-colors" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                    Dashboard
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-gutter py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">sim_card</span>
+                    SIMCARDs
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-gutter py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">phone_iphone</span>
+                    Numbers
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-gutter py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">badge</span>
+                    Employees
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-gutter py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">devices</span>
+                    Devices
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-gutter py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">domain</span>
+                    Carriers
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-gutter py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">swap_horiz</span>
+                    Number Swap
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-gutter py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">settings_backup_restore</span>
+                    SIM Replacement
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-gutter py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">assessment</span>
+                    Reports
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-gutter py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">group</span>
+                    Users
+                </a>
+</li>
+<li>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-gutter py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined">settings</span>
+                    Settings
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="ml-[240px] flex-1 flex flex-col h-full overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-background dark:bg-background text-primary dark:text-primary-fixed font-headline text-headline border-b border-outline-variant flex justify-between items-center w-full px-margin_page h-header_height flex-shrink-0">
+<div class="font-headline text-headline font-bold text-on-surface">Dashboard</div>
+<div class="flex items-center gap-stack_md h-full">
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="pl-8 pr-3 py-1.5 bg-surface-container border border-outline-variant rounded-DEFAULT font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none text-on-surface w-64" placeholder="Search..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-DEFAULT font-label-sm text-label-sm hover:bg-primary-fixed-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Add New
+                </button>
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-primary font-title-md border border-outline-variant ml-2">
+<span class="material-symbols-outlined">person</span>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto p-margin_page bg-surface-container-low">
+<div class="max-w-7xl mx-auto space-y-stack_md">
+<!-- KPI Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-stack_md">
+<!-- Total SIMs Card -->
+<div class="bg-surface border border-outline-variant rounded-lg p-stack_md flex flex-col justify-between hover:border-primary transition-colors cursor-default">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total de SIMCARDs</h3>
+<span class="material-symbols-outlined text-primary text-[24px]">sim_card</span>
+</div>
+<div class="font-display text-display text-on-surface">1,245</div>
+<div class="text-xs text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-green-600">trending_up</span>
+<span>+12 this month</span>
+</div>
+</div>
+<!-- In Stock Card -->
+<div class="bg-surface border border-outline-variant rounded-lg p-stack_md flex flex-col justify-between hover:border-primary transition-colors cursor-default">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Em estoque</h3>
+<span class="material-symbols-outlined text-secondary text-[24px]">inventory_2</span>
+</div>
+<div class="font-display text-display text-on-surface">342</div>
+<div class="text-xs text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="inline-block w-2 h-2 rounded-full bg-surface-variant"></span>
+<span>Ready for deployment</span>
+</div>
+</div>
+<!-- Personal Use Card -->
+<div class="bg-surface border border-outline-variant rounded-lg p-stack_md flex flex-col justify-between hover:border-primary transition-colors cursor-default">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Em uso particular</h3>
+<span class="material-symbols-outlined text-primary text-[24px]">person</span>
+</div>
+<div class="font-display text-display text-on-surface">850</div>
+<div class="text-xs text-on-surface-variant mt-2 flex items-center gap-1">
+<span class="inline-block w-2 h-2 rounded-full bg-green-500"></span>
+<span>Active lines</span>
+</div>
+</div>
+<!-- WhatsApp Card -->
+<div class="bg-surface border border-outline-variant rounded-lg p-stack_md flex flex-col justify-between hover:border-primary transition-colors cursor-default">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">WhatsApp</h3>
+<span class="material-symbols-outlined text-green-600 text-[24px]">forum</span>
+</div>
+<div class="font-display text-display text-on-surface">721</div>
+<div class="text-xs text-on-surface-variant mt-2 flex items-center gap-1">
+<span>Business verified</span>
+</div>
+</div>
+</div>
+<!-- Secondary KPIs -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack_md mt-stack_md">
+<!-- Damaged Card -->
+<div class="bg-surface border border-outline-variant rounded-lg p-stack_md flex flex-col justify-between border-l-4 border-l-error hover:border-error transition-colors cursor-default">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Danificados</h3>
+<span class="material-symbols-outlined text-error text-[20px]">warning</span>
+</div>
+<div class="font-headline text-headline text-error">18</div>
+</div>
+<!-- Lost Card -->
+<div class="bg-surface border border-outline-variant rounded-lg p-stack_md flex flex-col justify-between border-l-4 border-l-secondary hover:border-secondary transition-colors cursor-default">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Perdidos</h3>
+<span class="material-symbols-outlined text-secondary text-[20px]">location_off</span>
+</div>
+<div class="font-headline text-headline text-on-surface">12</div>
+</div>
+<!-- Not Returned Card -->
+<div class="bg-surface border border-outline-variant rounded-lg p-stack_md flex flex-col justify-between border-l-4 border-l-[#d97706] hover:border-[#d97706] transition-colors cursor-default">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Não devolvidos</h3>
+<span class="material-symbols-outlined text-[#d97706] text-[20px]">assignment_return</span>
+</div>
+<div class="font-headline text-headline text-on-surface">23</div>
+</div>
+</div>
+<!-- Chart Placeholder / Recent Activity area to fill out the dashboard -->
+<div class="mt-stack_md bg-surface border border-outline-variant rounded-lg p-stack_md min-h-[300px]">
+<h2 class="font-title-md text-title-md text-on-surface mb-stack_sm">Visão Geral de Status</h2>
+<div class="w-full h-64 bg-surface-container flex items-center justify-center rounded-DEFAULT border border-outline-variant border-dashed">
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined">bar_chart</span>
+                            Área reservada para gráfico de evolução
+                        </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

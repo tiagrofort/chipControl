@@ -6,6 +6,7 @@
 ## Histórico de alterações
 
 * [x] **2026-08-28** — Prompt 010 executado. Definidos os relatórios essenciais da primeira versão. Conforme decidido na revisão final, não foram criados relatórios complexos sem necessidade.
+* [x] **2026-08-28** — Prompt 011 executado. Relatórios da primeira versão confirmados (9 relatórios do Prompt 010). Nenhum relatório novo adicionado.
 
 ## Relatórios
 

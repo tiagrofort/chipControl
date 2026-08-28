@@ -6,12 +6,15 @@
 ## Histórico de alterações
 
 * [x] **2026-08-28** — Prompt 007 executado. Definido o modelo conceitual de dados com 8 tabelas, campos, chaves, relacionamentos, histórico, integridade e observações. Compatível com SQLite (inicial) e preparado para PostgreSQL/MySQL futuramente.
+* [x] **2026-08-28** — Prompt 011 executado. Relação entre SIMCards, HistoricoNumeros, HistoricoUtilizacao e HistoricoSubstituicao documentada explicitamente. Nota de que o modelo NÃO é Event Sourcing completo registrada. Formato de importação definido (EXCEL .xlsx). Correções tipográficas pontuais realizadas. Conteúdo do UX Design versionado.
 
 ## Modelo de Dados
 
 ### Princípio Fundamental
 
 O modelo NUNCA sobrescreve informações históricas. Toda alteração gera um novo registro no histórico. O estado atual é derivado dos registros históricos mais recentes, sem exclusão de dados anteriores.
+
+> **Regra final (Prompt 011):** o modelo NÃO é Event Sourcing completo. As entidades de cadastro (ex.: SIMCards) mantêm o estado atual do SIMCARD físico; as tabelas de histórico registram a evolução (números, utilização, substituição). O estado atual NÃO deve ser duplicado desnecessariamente dentro das tabelas de histórico. As tabelas de histórico registram períodos (data_inicio/data_fim) e nunca apagam ou sobrescrevem registros anteriores.
 
 ---
 
@@ -84,7 +87,7 @@ Cadastro de operadoras de telefonia.
 
 ### 4. SIMCards
 
-Cadastro de SIMCARDs/smartphones.
+Cadastro de SIMCARDs.
 
 | Campo | Tipo Conceitual | Obrigatório | Descrição |
 |-------|----------------|-------------|-----------|
@@ -342,6 +345,29 @@ A decisão sobre criar um cadastro separado de Planos será tomada em momento fu
 
 ---
 
+## Relação entre SIMCards e as Tabelas de Histórico (Prompt 011)
+
+### Papéis de cada tabela — REGRA FINAL
+
+| Tabela | Papel |
+|--------|-------|
+| **SIMCards** | Cadastro atual do SIMCARD físico (identificação do chip, ICCID, operadora, status, plano). Representa o estado atual. |
+| **HistoricoNumeros** | Evolução dos números associados ao SIMCARD ao longo do tempo (número, data_inicio, data_fim). O registro com data_fim = null é o número atual. |
+| **HistoricoUtilizacao** | Períodos de utilização da linha/SIMCARD, incluindo funcionário e/ou aparelho quando aplicável (data_inicio, data_fim, situação). O registro com data_fim = null é a utilização atual. |
+| **HistoricoSubstituicao** | Substituição de um SIMCARD por outro (SIMCARD antigo, SIMCARD novo, motivo, data). Preserva ambos os cadastros. |
+
+### Regras fechadas
+
+- [x] **NÃO é Event Sourcing completo.** Simples modelo relacional com registros históricos que nunca são apagados ou sobrescritos.
+- [x] **SIMCards** mantém o estado atual do SIMCARD físico (não é reescrito pelas tabelas de histórico).
+- [x] **HistoricoNumeros** registra a evolução dos números; o número anterior permanece com data_fim preenchido e o novo número é um novo registro com data_fim = null.
+- [x] **HistoricoUtilizacao** registra os períodos de utilização da linha/SIMCARD, com funcionário e/ou aparelho quando aplicável; mudanças geram novos registros.
+- [x] **HistoricoSubstituicao** registra a substituição de um SIMCARD por outro, sem apagar o SIMCARD antigo.
+- [x] NÃO duplicar desnecessariamente o estado atual dentro das tabelas de histórico.
+- [x] O estado atual (número atual, utilização atual, status) é derivado dos registros mais recentes (data_fim = null).
+
+---
+
 ## Compatibilidade de Banco de Dados
 
 ### SQLite (Inicial)
@@ -353,7 +379,7 @@ A decisão sobre criar um cadastro separado de Planos será tomada em momento fu
 ### PostgreSQL (Futuro)
 - Tipos nativos: SERIAL, VARCHAR, TEXT, BOOLEAN, DATE, TIMESTAMP
 - ENUM nativo para status e situações
-- Generos de序列
+- Sequências
 
 ### MySQL (Futuro)
 - Tipos: INT, VARCHAR, TEXT, BOOLEAN, DATE, DATETIME
@@ -364,7 +390,7 @@ A decisão sobre criar um cadastro separado de Planos será tomada em momento fu
 - Usar tipos de dados portáveis entre bancos
 - Evitar recursos específicos de um SGBD
 - Deferir validações complexas para a aplicação
--foreign keys com ON DELETE RESTRICT
+- Foreign keys com ON DELETE RESTRICT
 
 ---
 
@@ -374,8 +400,8 @@ A decisão sobre criar um cadastro separado de Planos será tomada em momento fu
 |------|-----------|--------|
 | 1 | Estrutura técnica do plano/tipo de linha | Decisão postergada — campos simples adotados |
 | 2 | Cadastro separado de Planos | Decisão postergada — não criar sem necessidade |
-| 3 | Formato do arquivo de importação | Pendente — não definido ainda |
-| 4 | Regras detalhadas de cada status | Pendente — não definir neste momento |
+| 3 | Formato do arquivo de importação | RESOLVIDO no Prompt 011 — EXCEL (.xlsx); primeira versão trabalha com número antigo, número do SIMCARD e número novo |
+| 4 | Regras detalhadas de cada status | DECISÃO REGISTRADA no Prompt 011 — separação conceitual situação física × utilização da linha; regras transicionais operacionais para a implementação |
 | 5 | Permissões granulares de usuários | Fora do escopo — apenas 2 níveis |
 | 6 | Auditoria detalhada | Pendente de definição |
 | 7 | Backup e restore | Pendente de definição |

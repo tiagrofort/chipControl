@@ -7,6 +7,7 @@
 
 * [x] **2026-08-28** — Prompt 009 executado. UX Design já existente criado no Google Stitch foi registrado como referência visual para a implementação WPF. O design não foi recriado, redesenho ou alterado. Layout com menu lateral, telas com área de ações na parte superior, listagens em grid, edição em modal, pesquisa, cadastro rápido relacionado.
 * [x] **2026-08-28** — Prompt 010 executado. Revisão final e congelamento da especificação. Decisões de interface confirmadas e registradas como referência. Grids podem ser ajustados em implementação sem impacto no design.
+* [x] **2026-08-28** — Prompt 011 executado. Referência do arquivo do Stitch corrigida para o nome real (`docs/ux_design.zip`, contendo o conteúdo `stitch_controle_de_chips_ux_design/` descompactado em `docs/ux_design/`). UX Design versionado no Git. Interface mantida sem alterações.
 
 ## Interface do Usuário
 
@@ -42,4 +43,4 @@
 - [x] O design não foi alterado.
 - [x] A especificação de interface está CONGELADA.
 
-> Observação: o design visual foi criado externamente no Google Stitch e está sendo aqui documentado como referência. O Kilo Code não criou o design. O arquivo `docs/stitch_controle_de_chips_ux_design.zip` contém o design existente e deve ser mantido sem modificações.
+> Observação: o design visual foi criado externamente no Google Stitch e está sendo aqui documentado como referência. O Kilo Code não criou o design. O arquivo `docs/ux_design.zip` (com o conteúdo descompactado em `docs/ux_design/`, pasta `stitch_controle_de_chips_ux_design/` dentro do ZIP) contém o design existente e deve ser mantido sem modificações.

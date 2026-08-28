@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports - Controle de Chips</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c9c6c4",
+                        "secondary-fixed": "#e6e2df",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#b1d1ff",
+                        "tertiary": "#404140",
+                        "surface-container-highest": "#e1e2e8",
+                        "surface-tint": "#1260a5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#1c1b1a",
+                        "inverse-surface": "#2e3035",
+                        "surface": "#f8f9ff",
+                        "secondary": "#605e5c",
+                        "outline": "#727782",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#575858",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#e1e2e8",
+                        "surface-container-high": "#e7e8ee",
+                        "surface-dim": "#d8dae0",
+                        "on-secondary-container": "#666462",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "surface-container-low": "#f2f3fa",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#191c20",
+                        "outline-variant": "#c1c7d2",
+                        "on-surface-variant": "#414750",
+                        "on-error": "#ffffff",
+                        "primary-container": "#005a9e",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eff0f7",
+                        "primary-fixed-dim": "#a2c9ff",
+                        "primary-fixed": "#d3e4ff",
+                        "on-secondary-fixed-variant": "#484645",
+                        "primary": "#004277",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e3e2e1",
+                        "surface-container": "#ecedf4",
+                        "on-tertiary-container": "#cfcecd",
+                        "on-primary-fixed": "#001c38",
+                        "on-primary-fixed-variant": "#004881",
+                        "secondary-container": "#e6e2df",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "inverse-primary": "#a2c9ff",
+                        "on-background": "#191c20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack_md": "16px",
+                        "stack_sm": "8px",
+                        "gutter": "16px",
+                        "sidebar_width": "240px",
+                        "grid_row_height": "40px",
+                        "margin_page": "24px",
+                        "header_height": "64px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Work Sans"],
+                        "data-mono": ["JetBrains Mono"],
+                        "title-md": ["Work Sans"],
+                        "label-sm": ["Work Sans"],
+                        "display": ["Work Sans"],
+                        "body-md": ["Work Sans"],
+                        "body-lg": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "data-mono": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500" }],
+                        "display": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md h-screen w-screen overflow-hidden flex">
+<!-- SideNavBar -->
+<aside class="bg-surface dark:bg-surface-container-low text-primary dark:text-primary-fixed font-body-md text-body-md fixed left-0 top-0 h-full w-[240px] border-r border-outline-variant dark:border-outline flex flex-col w-[240px] h-full py-4 z-20">
+<div class="px-gutter mb-stack_md">
+<h1 class="font-headline text-headline text-primary dark:text-primary-fixed font-bold">Controle de Chips</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">SIM Management</p>
+</div>
+<nav class="flex-1 overflow-y-auto py-2">
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-4 py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-4 py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="sim_card">sim_card</span>
+<span>SIMCARDs</span>
+</a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-4 py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="phone_iphone">phone_iphone</span>
+<span>Numbers</span>
+</a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-4 py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span>Employees</span>
+</a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-4 py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="devices">devices</span>
+<span>Devices</span>
+</a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-4 py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span>Carriers</span>
+</a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-4 py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span>Number Swap</span>
+</a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-4 py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="settings_backup_restore">settings_backup_restore</span>
+<span>SIM Replacement</span>
+</a>
+<a class="flex items-center gap-3 border-l-4 border-primary bg-secondary-container text-primary font-title-md text-title-md px-4 py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="assessment" data-weight="fill">assessment</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-4 py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center gap-3 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md px-4 py-2 hover:bg-surface-container-high transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col ml-[240px] w-[calc(100%-240px)] h-full bg-background relative z-10">
+<!-- TopNavBar -->
+<header class="bg-background dark:bg-background text-primary dark:text-primary-fixed font-headline text-headline docked full-width top-0 h-[64px] border-b border-outline-variant flex justify-between items-center w-full px-margin_page h-header_height flex-shrink-0 z-10">
+<div class="flex items-center gap-4">
+<h2 class="font-headline text-headline font-bold text-on-surface">Relatórios</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative flex items-center h-[64px]">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-body-md font-body-md text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64" placeholder="Pesquisar..." type="text"/>
+</div>
+<button class="bg-primary text-on-primary font-label-sm text-label-sm px-4 py-2 rounded-DEFAULT hover:bg-primary-fixed-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                    Add New
+                </button>
+</div>
+</header>
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto p-margin_page bg-surface-container-lowest">
+<!-- Filters -->
+<div class="bg-surface border border-outline-variant rounded-lg p-gutter mb-margin_page shadow-sm">
+<h3 class="font-title-md text-title-md text-on-surface mb-stack_md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="filter_list">filter_list</span>
+                    Filtros de Relatório
+                </h3>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Data Inicial</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary h-[36px]" type="date"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Data Final</label>
+<input class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary h-[36px]" type="date"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Operadora</label>
+<select class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary h-[36px]">
+<option value="">Todas as Operadoras</option>
+<option value="vivo">Vivo</option>
+<option value="claro">Claro</option>
+<option value="tim">TIM</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Setor</label>
+<select class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT px-3 py-2 font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary h-[36px]">
+<option value="">Todos os Setores</option>
+<option value="vendas">Vendas</option>
+<option value="ti">TI</option>
+<option value="rh">RH</option>
+</select>
+</div>
+</div>
+<div class="mt-stack_md flex justify-end gap-3">
+<button class="px-4 py-2 border border-outline text-on-surface-variant font-label-sm text-label-sm rounded-DEFAULT hover:bg-surface-container-low transition-colors uppercase">Limpar</button>
+<button class="px-4 py-2 bg-primary text-on-primary font-label-sm text-label-sm rounded-DEFAULT hover:bg-primary-fixed-variant transition-colors uppercase flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="play_arrow">play_arrow</span>
+                        Gerar Relatório
+                    </button>
+</div>
+</div>
+<!-- Report Cards Grid -->
+<h3 class="font-title-md text-title-md text-on-surface mb-stack_md">Relatórios Disponíveis</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-margin_page">
+<!-- Card 1 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-gutter hover:border-primary hover:shadow-md transition-all cursor-pointer group flex flex-col h-full">
+<div class="flex items-start justify-between mb-4">
+<div class="bg-primary-fixed p-2 rounded-lg text-primary-fixed-variant">
+<span class="material-symbols-outlined text-2xl" data-icon="pie_chart">pie_chart</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="open_in_new">open_in_new</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-2">Uso por Funcionário</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1">Consumo de dados e voz detalhado por colaborador nos últimos 30 dias.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-gutter hover:border-primary hover:shadow-md transition-all cursor-pointer group flex flex-col h-full">
+<div class="flex items-start justify-between mb-4">
+<div class="bg-secondary-container p-2 rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined text-2xl" data-icon="sim_card_alert">sim_card_alert</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="open_in_new">open_in_new</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-2">Status de SIMCARDs</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1">Visão geral do inventário: ativos, inativos, bloqueados e em estoque.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface border border-outline-variant rounded-lg p-gutter hover:border-primary hover:shadow-md transition-all cursor-pointer group flex flex-col h-full">
+<div class="flex items-start justify-between mb-4">
+<div class="bg-error-container p-2 rounded-lg text-on-error-container">
+<span class="material-symbols-outlined text-2xl" data-icon="history_toggle_off">history_toggle_off</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="open_in_new">open_in_new</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-2">Trocas de Número</h4>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1">Histórico de portabilidades e substituições de números entre funcionários.</p>
+</div>
+</div>
+<!-- Placeholder for Report Results -->
+<div class="bg-surface border border-outline-variant rounded-lg p-gutter flex flex-col items-center justify-center h-[300px] border-dashed">
+<div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl" data-icon="monitoring">monitoring</span>
+</div>
+<h4 class="font-title-md text-title-md text-on-surface mb-2">Nenhum relatório gerado</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-center max-w-md">Selecione os filtros acima e clique em "Gerar Relatório" para visualizar os dados aqui.</p>
+</div>
+</div>
+</main>
+</body></html>

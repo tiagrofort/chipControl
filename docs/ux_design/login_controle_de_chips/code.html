@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - Controle de Chips</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&amp;family=Work+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c9c6c4",
+                        "secondary-fixed": "#e6e2df",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#b1d1ff",
+                        "tertiary": "#404140",
+                        "surface-container-highest": "#e1e2e8",
+                        "surface-tint": "#1260a5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#1c1b1a",
+                        "inverse-surface": "#2e3035",
+                        "surface": "#f8f9ff",
+                        "secondary": "#605e5c",
+                        "outline": "#727782",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#575858",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#e1e2e8",
+                        "surface-container-high": "#e7e8ee",
+                        "surface-dim": "#d8dae0",
+                        "on-secondary-container": "#666462",
+                        "tertiary-fixed-dim": "#c7c6c5",
+                        "surface-container-low": "#f2f3fa",
+                        "surface-bright": "#f8f9ff",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#191c20",
+                        "outline-variant": "#c1c7d2",
+                        "on-surface-variant": "#414750",
+                        "on-error": "#ffffff",
+                        "primary-container": "#005a9e",
+                        "on-secondary": "#ffffff",
+                        "inverse-on-surface": "#eff0f7",
+                        "primary-fixed-dim": "#a2c9ff",
+                        "primary-fixed": "#d3e4ff",
+                        "on-secondary-fixed-variant": "#484645",
+                        "primary": "#004277",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#e3e2e1",
+                        "surface-container": "#ecedf4",
+                        "on-tertiary-container": "#cfcecd",
+                        "on-primary-fixed": "#001c38",
+                        "on-primary-fixed-variant": "#004881",
+                        "secondary-container": "#e6e2df",
+                        "on-tertiary-fixed-variant": "#464746",
+                        "inverse-primary": "#a2c9ff",
+                        "on-background": "#191c20"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack_md": "16px",
+                        "stack_sm": "8px",
+                        "gutter": "16px",
+                        "sidebar_width": "240px",
+                        "grid_row_height": "40px",
+                        "margin_page": "24px",
+                        "header_height": "64px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Work Sans"],
+                        "data-mono": ["JetBrains Mono"],
+                        "title-md": ["Work Sans"],
+                        "label-sm": ["Work Sans"],
+                        "display": ["Work Sans"],
+                        "body-md": ["Work Sans"],
+                        "body-lg": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "headline": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "data-mono": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.5px", "fontWeight": "500" }],
+                        "display": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "body-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-lg": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-container-low text-on-surface min-h-screen flex items-center justify-center relative overflow-hidden font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Silenced Background Decorative Elements for Corporate Feel -->
+<div class="absolute inset-0 z-0 pointer-events-none opacity-40 bg-[linear-gradient(to_right,#e1e2e8_1px,transparent_1px),linear-gradient(to_bottom,#e1e2e8_1px,transparent_1px)] bg-[size:32px_32px]"></div>
+<div class="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary-fixed-dim/30 blur-[120px] z-0 pointer-events-none"></div>
+<!-- Login Card (Level 2 Modal/Popup Elevation) -->
+<main class="relative z-10 w-full max-w-[420px] mx-4 bg-surface-container-lowest border border-surface-variant rounded-lg p-10 shadow-[0_8px_32px_-12px_rgba(0,0,0,0.12)]">
+<!-- Header & Logo -->
+<header class="flex flex-col items-center mb-10 text-center">
+<div class="w-14 h-14 rounded-DEFAULT bg-primary-container text-on-primary-container flex items-center justify-center mb-4 shadow-sm border border-primary">
+<span class="material-symbols-outlined" data-weight="fill" style="font-size: 32px;">sim_card</span>
+</div>
+<h1 class="font-display text-display text-on-surface tracking-tight">Controle de Chips</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Acesso Seguro ao Sistema</p>
+</header>
+<!-- Login Form -->
+<form class="space-y-6" onsubmit="event.preventDefault();">
+<!-- Username Input -->
+<div class="space-y-stack_sm">
+<label class="block font-label-sm text-label-sm text-on-surface uppercase tracking-wider" for="username">Nome de Usuário</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined" style="font-size: 20px;">person</span>
+</div>
+<input autocomplete="username" class="block w-full h-grid_row_height pl-10 pr-3 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all duration-200" id="username" name="username" placeholder="Insira seu usuário" required="" spellcheck="false" type="text"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="space-y-stack_sm">
+<label class="block font-label-sm text-label-sm text-on-surface uppercase tracking-wider" for="password">Senha</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined" style="font-size: 20px;">lock</span>
+</div>
+<input autocomplete="current-password" class="block w-full h-grid_row_height pl-10 pr-3 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT text-on-surface font-body-md text-body-md focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all duration-200" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<!-- Submit Action -->
+<div class="pt-2">
+<button class="w-full h-grid_row_height flex items-center justify-center gap-2 bg-primary-container hover:bg-primary text-on-primary-container hover:text-on-primary font-title-md text-title-md rounded-DEFAULT border border-transparent focus:outline-none focus:ring-2 focus:ring-primary-fixed focus:ring-offset-2 transition-colors duration-200 active:scale-[0.98]" type="submit">
+<span>Entrar</span>
+<span class="material-symbols-outlined" style="font-size: 20px;">login</span>
+</button>
+</div>
+</form>
+<!-- Footer Links -->
+<footer class="mt-8 pt-6 border-t border-surface-variant text-center">
+<a class="inline-flex items-center gap-1 font-body-md text-body-md text-primary-container hover:text-primary transition-colors group" href="#">
+<span class="material-symbols-outlined text-[16px] group-hover:rotate-12 transition-transform duration-300">key</span>
+<span class="underline-offset-4 group-hover:underline">Recuperação de Senha</span>
+</a>
+</footer>
+</main>
+</body></html>

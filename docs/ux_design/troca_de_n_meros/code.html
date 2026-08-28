@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Troca de Números - Controle de Chips</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed-dim": "#c9c6c4",
+                      "secondary-fixed": "#e6e2df",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#b1d1ff",
+                      "tertiary": "#404140",
+                      "surface-container-highest": "#e1e2e8",
+                      "surface-tint": "#1260a5",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#1c1b1a",
+                      "inverse-surface": "#2e3035",
+                      "surface": "#f8f9ff",
+                      "secondary": "#605e5c",
+                      "outline": "#727782",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#575858",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "background": "#f8f9ff",
+                      "surface-variant": "#e1e2e8",
+                      "surface-container-high": "#e7e8ee",
+                      "surface-dim": "#d8dae0",
+                      "on-secondary-container": "#666462",
+                      "tertiary-fixed-dim": "#c7c6c5",
+                      "surface-container-low": "#f2f3fa",
+                      "surface-bright": "#f8f9ff",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#191c20",
+                      "outline-variant": "#c1c7d2",
+                      "on-surface-variant": "#414750",
+                      "on-error": "#ffffff",
+                      "primary-container": "#005a9e",
+                      "on-secondary": "#ffffff",
+                      "inverse-on-surface": "#eff0f7",
+                      "primary-fixed-dim": "#a2c9ff",
+                      "primary-fixed": "#d3e4ff",
+                      "on-secondary-fixed-variant": "#484645",
+                      "primary": "#004277",
+                      "on-tertiary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "tertiary-fixed": "#e3e2e1",
+                      "surface-container": "#ecedf4",
+                      "on-tertiary-container": "#cfcecd",
+                      "on-primary-fixed": "#001c38",
+                      "on-primary-fixed-variant": "#004881",
+                      "secondary-container": "#e6e2df",
+                      "on-tertiary-fixed-variant": "#464746",
+                      "inverse-primary": "#a2c9ff",
+                      "on-background": "#191c20"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack_md": "16px",
+                      "stack_sm": "8px",
+                      "gutter": "16px",
+                      "sidebar_width": "240px",
+                      "grid_row_height": "40px",
+                      "margin_page": "24px",
+                      "header_height": "64px"
+              },
+              "fontFamily": {
+                      "headline": [
+                              "Work Sans"
+                      ],
+                      "data-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "title-md": [
+                              "Work Sans"
+                      ],
+                      "label-sm": [
+                              "Work Sans"
+                      ],
+                      "display": [
+                              "Work Sans"
+                      ],
+                      "body-md": [
+                              "Work Sans"
+                      ],
+                      "body-lg": [
+                              "Work Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-mono": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.5px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined[data-weight="fill"] {
+            font-variation-settings: 'FILL' 1;
+        }
+        
+        /* Custom scrollbar for data grids */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c1c7d2; 
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #a1a7b2; 
+        }
+    </style>
+</head>
+<body class="bg-[#F3F2F1] text-on-surface font-body-md font-sans antialiased min-h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest border-r border-[#EDEBE9] flex flex-col py-4 z-20">
+<div class="px-6 mb-8">
+<h1 class="font-headline text-headline text-primary font-bold">Controle de Chips</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">SIM Management</p>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<ul class="flex flex-col gap-1">
+<!-- Dashboard -->
+<li class="px-4">
+<a class="flex items-center gap-3 px-4 h-10 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md hover:bg-[#F3F2F1] transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<!-- SIMCARDs -->
+<li class="px-4">
+<a class="flex items-center gap-3 px-4 h-10 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md hover:bg-[#F3F2F1] transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="sim_card">sim_card</span>
+<span>SIMCARDs</span>
+</a>
+</li>
+<!-- Numbers -->
+<li class="px-4">
+<a class="flex items-center gap-3 px-4 h-10 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md hover:bg-[#F3F2F1] transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="phone_iphone">phone_iphone</span>
+<span>Numbers</span>
+</a>
+</li>
+<!-- Employees -->
+<li class="px-4">
+<a class="flex items-center gap-3 px-4 h-10 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md hover:bg-[#F3F2F1] transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span>Employees</span>
+</a>
+</li>
+<!-- Devices -->
+<li class="px-4">
+<a class="flex items-center gap-3 px-4 h-10 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md hover:bg-[#F3F2F1] transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="devices">devices</span>
+<span>Devices</span>
+</a>
+</li>
+<!-- Carriers -->
+<li class="px-4">
+<a class="flex items-center gap-3 px-4 h-10 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md hover:bg-[#F3F2F1] transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span>Carriers</span>
+</a>
+</li>
+<!-- Number Swap (ACTIVE) -->
+<li class="px-4">
+<a class="flex items-center gap-3 px-4 h-10 border-l-4 border-[#005A9E] bg-[#F3F2F1] text-[#005A9E] font-title-md text-title-md cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="swap_horiz" data-weight="fill">swap_horiz</span>
+<span>Number Swap</span>
+</a>
+</li>
+<!-- SIM Replacement -->
+<li class="px-4">
+<a class="flex items-center gap-3 px-4 h-10 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md hover:bg-[#F3F2F1] transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="settings_backup_restore">settings_backup_restore</span>
+<span>SIM Replacement</span>
+</a>
+</li>
+<!-- Reports -->
+<li class="px-4">
+<a class="flex items-center gap-3 px-4 h-10 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md hover:bg-[#F3F2F1] transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span>Reports</span>
+</a>
+</li>
+<!-- Users -->
+<li class="px-4">
+<a class="flex items-center gap-3 px-4 h-10 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md hover:bg-[#F3F2F1] transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Users</span>
+</a>
+</li>
+<!-- Settings -->
+<li class="px-4">
+<a class="flex items-center gap-3 px-4 h-10 border-l-4 border-transparent text-on-surface-variant font-body-md text-body-md hover:bg-[#F3F2F1] transition-colors cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="ml-[240px] flex-1 flex flex-col h-screen w-[calc(100%-240px)]">
+<!-- TopNavBar -->
+<header class="bg-surface-container-lowest border-b border-[#EDEBE9] h-[64px] flex justify-between items-center px-margin_page w-full z-10 shrink-0">
+<div class="flex items-center">
+<h2 class="font-headline text-headline text-on-surface">Processo de Troca de Números</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-[#F3F2F1] border-transparent focus:border-[#005A9E] focus:bg-white focus:ring-0 rounded-sm font-body-md text-body-md w-64 transition-all" placeholder="Buscar..." type="text"/>
+</div>
+<div class="h-8 w-px bg-outline-variant mx-2"></div>
+<button class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-dim transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-title-md text-sm ml-2">
+                    AS
+                </button>
+</div>
+</header>
+<!-- Canvas / Content -->
+<main class="flex-1 overflow-y-auto p-margin_page flex flex-col gap-6">
+<!-- Process Stepper Header -->
+<div class="bg-surface-container-lowest rounded-sm border border-[#EDEBE9] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+<div class="flex items-center justify-between relative">
+<!-- Line connecting steps -->
+<div class="absolute left-[10%] right-[10%] top-1/2 h-[2px] bg-surface-variant -z-0"></div>
+<!-- Step 1: Completed -->
+<div class="flex flex-col items-center gap-2 relative z-10 w-1/3">
+<div class="w-8 h-8 rounded-full bg-[#005A9E] text-white flex items-center justify-center border-2 border-white ring-2 ring-[#005A9E]/20">
+<span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold uppercase tracking-wider">1. Importar Lista</span>
+</div>
+<!-- Step 2: Completed (Simulated) -->
+<div class="flex flex-col items-center gap-2 relative z-10 w-1/3">
+<div class="w-8 h-8 rounded-full bg-[#005A9E] text-white flex items-center justify-center border-2 border-white ring-2 ring-[#005A9E]/20">
+<span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold uppercase tracking-wider">2. Processar</span>
+</div>
+<!-- Step 3: Active -->
+<div class="flex flex-col items-center gap-2 relative z-10 w-1/3">
+<div class="w-8 h-8 rounded-full bg-white border-2 border-[#005A9E] text-[#005A9E] flex items-center justify-center ring-4 ring-[#005A9E]/10">
+<span class="font-title-md text-sm">3</span>
+</div>
+<span class="font-label-sm text-label-sm text-[#005A9E] font-bold uppercase tracking-wider">3. Prévia da Troca</span>
+</div>
+</div>
+</div>
+<!-- Content Area: Preview Grid -->
+<div class="bg-surface-container-lowest rounded-sm border border-[#EDEBE9] flex-1 flex flex-col shadow-[0_1px_2px_rgba(0,0,0,0.05)] overflow-hidden">
+<!-- Action Bar -->
+<div class="h-14 px-4 flex items-center justify-between border-b border-[#EDEBE9] bg-white shrink-0">
+<div class="flex items-center gap-2">
+<h3 class="font-title-md text-title-md text-on-surface">Lote de Importação: LOTE-202310-04</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-variant text-on-surface-variant font-label-sm text-[10px] uppercase">125 Registros</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex gap-4 mr-4">
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-[#107C10]"></div>
+<span class="font-label-sm text-[11px] text-on-surface-variant">120 OK</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-[#D83B01]"></div>
+<span class="font-label-sm text-[11px] text-on-surface-variant">3 Divergência</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-[#797775]"></div>
+<span class="font-label-sm text-[11px] text-on-surface-variant">2 Não Encontrado</span>
+</div>
+</div>
+<button class="px-3 py-1.5 border border-[#EDEBE9] text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-sm flex items-center gap-2 font-label-sm text-label-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span>
+                            Filtrar Erros
+                        </button>
+<button class="px-3 py-1.5 border border-[#EDEBE9] text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-sm flex items-center gap-2 font-label-sm text-label-sm transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                            Exportar Prévia
+                        </button>
+</div>
+</div>
+<!-- Data Grid -->
+<div class="flex-1 overflow-auto custom-scrollbar bg-white">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-[#F3F2F1] z-10 shadow-[0_1px_0_#EDEBE9]">
+<tr>
+<th class="h-10 px-3 font-label-sm text-label-sm font-semibold text-on-surface-variant uppercase tracking-wider w-10 text-center border-b border-[#EDEBE9]">#</th>
+<th class="h-10 px-3 font-label-sm text-label-sm font-semibold text-on-surface-variant uppercase tracking-wider border-b border-[#EDEBE9]">SIMCARD (ICCID)</th>
+<th class="h-10 px-3 font-label-sm text-label-sm font-semibold text-on-surface-variant uppercase tracking-wider border-b border-[#EDEBE9]">Número Antigo</th>
+<th class="h-10 px-3 font-label-sm text-label-sm font-semibold text-on-surface-variant uppercase tracking-wider border-b border-[#EDEBE9]">Número Novo</th>
+<th class="h-10 px-3 font-label-sm text-label-sm font-semibold text-on-surface-variant uppercase tracking-wider border-b border-[#EDEBE9]">Situação</th>
+<th class="h-10 px-3 font-label-sm text-label-sm font-semibold text-on-surface-variant uppercase tracking-wider text-right border-b border-[#EDEBE9]">Ações</th>
+</tr>
+</thead>
+<tbody class="font-data-mono text-data-mono text-on-surface">
+<!-- Row 1: OK -->
+<tr class="h-10 border-b border-[#EDEBE9] hover:bg-surface-container-lowest focus-within:ring-1 focus-within:ring-[#005A9E] focus-within:ring-inset group">
+<td class="px-3 text-center text-outline">1</td>
+<td class="px-3">89551234567890123456</td>
+<td class="px-3 text-on-surface-variant">(11) 98765-4321</td>
+<td class="px-3 font-medium text-[#005A9E]">(11) 91234-5678</td>
+<td class="px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#DFF6DD] text-[#107C10] font-sans font-medium text-[11px]">
+<div class="w-1.5 h-1.5 rounded-full bg-[#107C10]"></div>
+                                        OK
+                                    </span>
+</td>
+<td class="px-3 text-right">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Divergência -->
+<tr class="h-10 border-b border-[#EDEBE9] bg-[#FFF4CE]/30 hover:bg-[#FFF4CE]/50 focus-within:ring-1 focus-within:ring-[#005A9E] focus-within:ring-inset group">
+<td class="px-3 text-center text-outline">2</td>
+<td class="px-3">89551234567890123457</td>
+<td class="px-3 text-on-surface-variant">(21) 99999-8888</td>
+<td class="px-3 font-medium text-[#005A9E]">(21) 98888-7777</td>
+<td class="px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#FDE7E9] text-[#D83B01] font-sans font-medium text-[11px]">
+<div class="w-1.5 h-1.5 rounded-full bg-[#D83B01]"></div>
+                                        Divergência
+                                    </span>
+<span class="ml-2 font-sans text-[10px] text-[#D83B01] hidden xl:inline-block">Número antigo pertence a outro SIM</span>
+</td>
+<td class="px-3 text-right">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Não Encontrado -->
+<tr class="h-10 border-b border-[#EDEBE9] hover:bg-surface-container-lowest focus-within:ring-1 focus-within:ring-[#005A9E] focus-within:ring-inset group">
+<td class="px-3 text-center text-outline">3</td>
+<td class="px-3 text-[#BA1A1A]">89550000000000000000</td>
+<td class="px-3 text-on-surface-variant">(31) 97777-6666</td>
+<td class="px-3 font-medium text-[#005A9E]">(31) 96666-5555</td>
+<td class="px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#F3F2F1] text-[#797775] font-sans font-medium text-[11px]">
+<div class="w-1.5 h-1.5 rounded-full bg-[#797775]"></div>
+                                        Não Encontrado
+                                    </span>
+</td>
+<td class="px-3 text-right">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: OK -->
+<tr class="h-10 border-b border-[#EDEBE9] hover:bg-surface-container-lowest focus-within:ring-1 focus-within:ring-[#005A9E] focus-within:ring-inset group">
+<td class="px-3 text-center text-outline">4</td>
+<td class="px-3">89551234567890123458</td>
+<td class="px-3 text-on-surface-variant">(41) 95555-4444</td>
+<td class="px-3 font-medium text-[#005A9E]">(41) 94444-3333</td>
+<td class="px-3">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#DFF6DD] text-[#107C10] font-sans font-medium text-[11px]">
+<div class="w-1.5 h-1.5 rounded-full bg-[#107C10]"></div>
+                                        OK
+                                    </span>
+</td>
+<td class="px-3 text-right">
+<button class="text-outline hover:text-primary transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer / Action Area -->
+<div class="p-4 border-t border-[#EDEBE9] bg-[#F3F2F1] flex justify-between items-center shrink-0">
+<p class="font-body-md text-sm text-on-surface-variant">
+                        Atenção: Apenas registros com situação <strong class="text-[#107C10]">OK</strong> serão processados na troca.
+                    </p>
+<div class="flex gap-3">
+<button class="px-6 py-2 border border-outline text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-sm font-label-sm text-label-sm uppercase tracking-wider transition-colors">
+                            Cancelar Lote
+                        </button>
+<button class="px-6 py-2 bg-[#005A9E] text-white hover:bg-[#004277] rounded-sm font-label-sm text-label-sm uppercase tracking-wider shadow-sm transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle">check_circle</span>
+                            Confirmar Troca (120)
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

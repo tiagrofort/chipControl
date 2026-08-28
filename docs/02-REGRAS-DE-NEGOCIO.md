@@ -6,6 +6,7 @@
 ## Histórico de alterações
 
 * [x] **2026-08-28** — Prompt 006 executado. Documentadas as regras fundamentais de histórico e movimentação: princípio de preservação do histórico, ciclo de vida do SIMCARD, regras de números telefônicos, troca de números por importação, substituição de SIMCARD, troca simultânea de SIMCARD e número, histórico de funcionários, histórico de aparelhos, regras de WhatsApp, cadastro rápido, operações que preservam histórico. Itens pendentes preservados.
+* [x] **2026-08-28** — Prompt 011 executado. Fechamento do fluxo de troca de números por importação (8 etapas), formato inicial de importação definido (EXCEL .xlsx), separação conceitual entre situação física do SIMCARD e utilização da linha registrada sem criar funcionalidade nova, fluxo de substituição confirmado. Status aprovados mantidos sem renomeação ou remoção.
 
 ## Regras de Negócio
 
@@ -37,6 +38,13 @@ Regras de ciclo de vida:
 - [x] Danificado, perdido ou não devolvido não significa exclusão do cadastro.
 - [x] O histórico do SIMCARD deve permanecer mesmo depois de sua desativação.
 
+Separação conceitual (fechada no Prompt 011):
+
+- [x] Os status aprovados representam a **situação física do SIMCARD**: Em estoque, Em uso particular, WhatsApp, Danificado, Perdido, Não devolvido, Descartado, Inativo. Nenhum status foi removido ou renomeado.
+- [x] A **utilização da linha** é uma informação registrada separadamente em HistoricoUtilizacao (períodos de utilização, funcionário e/ou aparelho quando aplicável).
+- [x] O SIMCARD físico pode estar no estoque e a linha continuar em utilização; especialmente no cenário WhatsApp, o chip físico pode voltar ao estoque enquanto a linha/WhatsApp continua vinculada à utilização.
+- [x] Essa separação é apenas conceitual/documental — não cria funcionalidade nova. A solução permanece simples.
+
 ### Números Telefônicos (Prompt 006)
 
 - [x] Um SIMCARD pode possuir diferentes números ao longo de sua vida.
@@ -63,7 +71,43 @@ A operadora fornece lista contendo: número antigo, número do SIMCARD, número 
 - [x] O novo número deverá passar a ser o número atual.
 - [x] A operação deverá preservar o histórico da alteração.
 
-> Observação: o formato técnico do arquivo de importação ainda NÃO está definido.
+> Observação: o formato técnico do arquivo de importação foi definido no Prompt 011 — **EXCEL (.xlsx)**. A primeira versão trabalha com a lista real utilizada pelo usuário contendo as três informações: número antigo, número do SIMCARD e número novo. Suporte adicional a CSV fica no backlog (docs/09-BACKLOG-FUTURO.md).
+
+### Fluxo de Troca de Números por Importação — Detalhamento Fechado (Prompt 011)
+
+O fluxo completo da operação de troca de números por importação:
+
+```
+IMPORTAÇÃO
+→ LEITURA
+→ RELACIONAMENTO
+→ IDENTIFICAÇÃO DE DIVERGÊNCIAS
+→ CONFERÊNCIA
+→ CONFIRMAÇÃO
+→ APLICAÇÃO
+→ HISTÓRICO
+```
+
+A lista recebida da operadora contém três informações:
+
+- [x] Número antigo.
+- [x] Número do SIMCARD.
+- [x] Número novo.
+
+A implementação deve permitir relacionar os dados existentes (SIMCARD cadastrado, número antigo registrado) e identificar pelo menos:
+
+- [x] SIMCARD encontrado.
+- [x] SIMCARD não encontrado.
+- [x] Número antigo encontrado.
+- [x] Número antigo não encontrado.
+- [x] Número novo já existente.
+- [x] Inconsistências (divergências entre a lista e os registros).
+
+Regras fechadas:
+
+- [x] NÃO alterar automaticamente registros com divergências sem confirmação.
+- [x] NÃO apagar números antigos.
+- [x] NÃO perder histórico.
 
 ### Substituição de SIMCARD (Prompt 006)
 
@@ -77,6 +121,21 @@ A operadora fornece lista contendo: número antigo, número do SIMCARD, número 
 - [x] O número poderá permanecer o mesmo após a substituição do SIMCARD.
 
 > Observação: tabelas e implementação ainda NÃO definidas.
+
+Fluxo de substituição — fechado no Prompt 011:
+
+```
+SIMCARD ANTIGO
+→ MOTIVO
+→ NOVO SIMCARD
+→ CONTINUIDADE DO NÚMERO
+→ CONFIRMAÇÃO
+→ HISTÓRICO
+```
+
+- [x] O SIMCARD antigo nunca deve ser apagado.
+- [x] O novo SIMCARD pode ser cadastrado durante a operação caso ainda não exista (cadastro rápido).
+- [x] O formulário atual deve ser preservado ao abrir o cadastro rápido (dados já preenchidos não são perdidos).
 
 ### Troca de Número e SIMCARD ao Mesmo Tempo (Prompt 006)
 
@@ -144,8 +203,8 @@ NÃO resolver neste prompt:
 - [ ] Modelo de dados. → **RESOLVIDO no Prompt 007** — Append-only com tabelas de histórico separadas.
 - [ ] Relacionamentos técnicos. → **RESOLVIDO no Prompt 007**
 - [ ] Estrutura das tabelas. → **RESOLVIDO no Prompt 007**
-- [ ] Formato definitivo do arquivo de importação. → **DECISÃO adiada para implementação**
-- [ ] Regras detalhadas de cada status. → **DECISÃO adiada para implementação**
+- [ ] Formato definitivo do arquivo de importação. → **RESOLVIDO no Prompt 011** — EXCEL (.xlsx).
+- [ ] Regras detalhadas de cada status. → **DECISÃO REGISTRADA no Prompt 011** — separação conceitual entre situação física do SIMCARD e utilização da linha fechada; regras transicionais operacionais de mudança de status ficam para a implementação, sem introduzir funcionalidade nova.
 - [ ] Regras detalhadas de movimentação. → **DECISÃO adiada para implementação**
 - [ ] Campos específicos do histórico. → **RESOLVIDO no Prompt 007**
 - [ ] Relatórios. → **DEFINIDOS no Prompt 010** — 9 relatórios essenciais.
