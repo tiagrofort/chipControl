@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChipControl.Domain", "ChipControl.Domain\ChipControl.Domain.csproj", "{3FD4BBB5-F6F4-4217-9129-825A5E381437}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChipControl.Application", "ChipControl.Application\ChipControl.Application.csproj", "{27B14E96-EF91-4A08-B871-C1FB6E71931C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChipControl.Infrastructure", "ChipControl.Infrastructure\ChipControl.Infrastructure.csproj", "{53A386C7-787F-46B3-B1C8-67A26FD86E7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChipControl.Persistence", "ChipControl.Persistence\ChipControl.Persistence.csproj", "{E38D9595-67A0-41A3-B52E-B72EFEAE4A06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChipControl.Presentation.WPF", "ChipControl.Presentation.WPF\ChipControl.Presentation.WPF.csproj", "{034E35ED-731F-4D5E-BD41-A7B21968E706}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChipControl.Tests", "..\tests\ChipControl.Tests\ChipControl.Tests.csproj", "{6B2A0BF6-9DF2-4FA6-85D2-D26AAE908BCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FD4BBB5-F6F4-4217-9129-825A5E381437}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FD4BBB5-F6F4-4217-9129-825A5E381437}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FD4BBB5-F6F4-4217-9129-825A5E381437}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FD4BBB5-F6F4-4217-9129-825A5E381437}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27B14E96-EF91-4A08-B871-C1FB6E71931C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27B14E96-EF91-4A08-B871-C1FB6E71931C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27B14E96-EF91-4A08-B871-C1FB6E71931C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27B14E96-EF91-4A08-B871-C1FB6E71931C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53A386C7-787F-46B3-B1C8-67A26FD86E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53A386C7-787F-46B3-B1C8-67A26FD86E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53A386C7-787F-46B3-B1C8-67A26FD86E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53A386C7-787F-46B3-B1C8-67A26FD86E7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E38D9595-67A0-41A3-B52E-B72EFEAE4A06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E38D9595-67A0-41A3-B52E-B72EFEAE4A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E38D9595-67A0-41A3-B52E-B72EFEAE4A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E38D9595-67A0-41A3-B52E-B72EFEAE4A06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034E35ED-731F-4D5E-BD41-A7B21968E706}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034E35ED-731F-4D5E-BD41-A7B21968E706}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034E35ED-731F-4D5E-BD41-A7B21968E706}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034E35ED-731F-4D5E-BD41-A7B21968E706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B2A0BF6-9DF2-4FA6-85D2-D26AAE908BCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B2A0BF6-9DF2-4FA6-85D2-D26AAE908BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B2A0BF6-9DF2-4FA6-85D2-D26AAE908BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B2A0BF6-9DF2-4FA6-85D2-D26AAE908BCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -17,3 +17,4 @@
 > A entrada original "Nenhuma ideia registrada até o momento" foi substituída quando a primeira ideia foi registrada (Prompt 011), preservando as regras deste arquivo.
 
 * [ ] Importação de troca de números em formato **CSV**. O formato **EXCEL (.xlsx)** foi definido como formato principal da primeira versão (Prompt 011); suporte adicional a CSV fica fora do escopo atual e poderá ser executado futuramente mediante decisão explícita.
+* [ ] Provider de banco **PostgreSQL** (Npgsql) e **MySQL** (Pomelo) — a estrutura `DatabaseProviderFactory` já existe e está preparada para extensão, mas os providers específicos não foram instalados nesta etapa (Prompt 012). Instalar e habilitar quando necessário.
