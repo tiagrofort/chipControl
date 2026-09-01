@@ -16,6 +16,7 @@
 * [x] **2026-08-28** — Prompt 010 executado. Revisão final e congelamento da especificação. Decisões finais sobre modelo de histórico, relação SIMCARD/números, fluxo de troca de números, fluxo de substituição de SIMCARD, utilização/estoque, cadastro rápido, autenticação, acesso master de testes, estratégia de banco, relatórios essenciais e interface. Especificação considerada CONGELADA para início da codificação.
 * [x] **2026-08-28** — Prompt 011 executado. Fechamento final pré-codificação: revisão estrutural final, UX Design (docs/ux_design/ e docs/ux_design.zip) versionado no Git, modelo de histórico e relação SIMCARD/número fechados, fluxo de troca de números e substituição fechados, formato de importação EXCEL (.xlsx), autenticação e acesso master documentados, banco inicial/futuro definido, relatórios da primeira versão confirmados e projeto congelado para início da codificação. Artefato residual `docs/prompts/002_objetivo_e_escopo.ps1` removido.
 * [x] **2026-08-31** — Prompt 012 executado. Início da implementação real. Solução WPF criada com arquitetura em camadas (Domain, Application, Infrastructure, Persistence, Presentation). SQLite + EF Core 8.0.30. Autenticação com hash BCrypt.Net-Next. Acesso master via #if DEBUG. 26 testes de unidade aprovados. Build completo com sucesso.
+* [x] **2026-09-01** — Prompt 014 executado. Cadastro funcional de Funcionários implementado em todas as camadas (Domain, Application, Infrastructure, Persistence, Presentation.WPF) seguindo o padrão visual do cadastro de Usuários. Migration `20260901121911_AddFuncionarioGerenciamento` criada e aplicada. 24 testes novos adicionados (total 69 testes, todos passando). Build com 0 erros e 0 warnings. Push realizado para `main`.
 
 ## Checkpoints concluídos
 
@@ -29,6 +30,7 @@
 * [x] Prompt 010 — Revisão final e congelamento da especificação — **2026-08-28**
 * [x] Prompt 011 — Fechamento final pré-codificação — **2026-08-28**
 * [x] Prompt 012 — Início da implementação — **2026-08-31**
+* [x] Prompt 014 — Cadastro de Funcionários — **2026-09-01**
 
 ## Checkpoints
 

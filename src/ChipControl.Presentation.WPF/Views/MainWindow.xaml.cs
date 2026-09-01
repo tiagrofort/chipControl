@@ -17,13 +17,14 @@ public partial class MainWindow : Window
 
     private void Dashboard_Click(object sender, RoutedEventArgs e) => Navegar(new Views.DashboardView());
     private void Simcards_Click(object sender, RoutedEventArgs e) => Navegar(new Views.PlaceholderView("SIMCARDs"));
-    private void Funcionarios_Click(object sender, RoutedEventArgs e) => Navegar(new Views.PlaceholderView("Funcionários"));
+    private void Funcionarios_Click(object sender, RoutedEventArgs e) => Navegar(new Views.FuncionarioGerenciamentoView());
     private void Operadoras_Click(object sender, RoutedEventArgs e) => Navegar(new Views.PlaceholderView("Operadoras"));
     private void Aparelhos_Click(object sender, RoutedEventArgs e) => Navegar(new Views.PlaceholderView("Aparelhos"));
     private void TrocaNumeros_Click(object sender, RoutedEventArgs e) => Navegar(new Views.PlaceholderView("Troca de Números"));
     private void Substituicao_Click(object sender, RoutedEventArgs e) => Navegar(new Views.PlaceholderView("Substituição"));
     private void Historico_Click(object sender, RoutedEventArgs e) => Navegar(new Views.PlaceholderView("Histórico"));
     private void Relatorios_Click(object sender, RoutedEventArgs e) => Navegar(new Views.PlaceholderView("Relatórios"));
+    private void Usuarios_Click(object sender, RoutedEventArgs e) => Navegar(new Views.UsuarioGerenciamentoView());
 
     private void Navegar(UserControl view)
     {

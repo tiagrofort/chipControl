@@ -9,6 +9,8 @@ public static class ApplicationServiceExtensions
     {
         services.AddScoped<IAutenticarUsuarioUseCase, AutenticarUsuarioUseCase>();
         services.AddScoped<ICriarAdministradorInicialUseCase, CriarAdministradorInicialUseCase>();
+        services.AddScoped<IUsuarioUseCase, UsuarioUseCase>();
+        services.AddScoped<IFuncionarioUseCase, FuncionarioUseCase>();
 
         return services;
     }

@@ -11,6 +11,7 @@ public class ChipControlDbContext : DbContext
     }
 
     public DbSet<UsuarioSistema> UsuariosSistema => Set<UsuarioSistema>();
+    public DbSet<Funcionario> Funcionarios => Set<Funcionario>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -34,6 +35,21 @@ public class ChipControlDbContext : DbContext
             entity.Property(e => e.Observacoes).HasColumnType("text");
             entity.Property(e => e.DataCadastro).IsRequired();
             entity.Property(e => e.DataAlteracao);
+        });
+
+        modelBuilder.Entity<Funcionario>(entity =>
+        {
+            entity.ToTable("Funcionarios");
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            entity.Property(e => e.NomeCompleto).IsRequired().HasMaxLength(255);
+            entity.Property(e => e.Matricula).HasMaxLength(50);
+            entity.Property(e => e.Setor).IsRequired().HasMaxLength(100);
+            entity.Property(e => e.Cargo).HasMaxLength(100);
+            entity.Property(e => e.TelefonePessoal).HasMaxLength(30);
+            entity.Property(e => e.Email).HasMaxLength(255);
+            entity.Property(e => e.Ativo).IsRequired();
+            entity.Property(e => e.Observacoes).HasColumnType("text");
         });
     }
 }

@@ -10,6 +10,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddInfrastructure(this IServiceCollection services)
     {
         services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+        services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
         services.AddSingleton<IHashService, HashService>();
 
         return services;
