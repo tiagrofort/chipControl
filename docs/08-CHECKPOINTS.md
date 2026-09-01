@@ -18,6 +18,7 @@
 * [x] **2026-08-31** — Prompt 012 executado. Início da implementação real. Solução WPF criada com arquitetura em camadas (Domain, Application, Infrastructure, Persistence, Presentation). SQLite + EF Core 8.0.30. Autenticação com hash BCrypt.Net-Next. Acesso master via #if DEBUG. 26 testes de unidade aprovados. Build completo com sucesso.
 * [x] **2026-09-01** — Prompt 014 executado. Cadastro funcional de Funcionários implementado em todas as camadas (Domain, Application, Infrastructure, Persistence, Presentation.WPF) seguindo o padrão visual do cadastro de Usuários. Migration `20260901121911_AddFuncionarioGerenciamento` criada e aplicada. 24 testes novos adicionados (total 69 testes, todos passando). Build com 0 erros e 0 warnings. Push realizado para `main`.
 * [x] **2026-09-01** — Prompt 015 executado. Saneamento da base (removido diretório órfão `src/Views/`) e configuração da build Release do projeto WPF para `build\Release\`. `.gitignore` atualizado para ignorar a pasta `build/`. Incluído no commit o código válido do Prompt 013 que estava pendente. 69 testes continuam passando. Build Debug e Release com 0 erros e 0 warnings.
+* [x] **2026-09-01** — Prompt 016 executado. Corrigida a inicialização do banco. Removido `EnsureCreated` (incompatível com Migrations). `DatabaseInitializer` migrado para `Infrastructure` e reescrito usando exclusivamente `Database.MigrateAsync()`. Adicionada recuperação para banco legado (tabelas sem `__EFMigrationsHistory`). Adicionada proteção contra inicialização concorrente. 11 novos testes (total 80 passando). Validação real de primeira/segunda execução na Release. Mensagem amigável em caso de erro. Build Debug e Release com 0 erros e 0 warnings.
 
 ## Checkpoints concluídos
 
@@ -33,6 +34,7 @@
 * [x] Prompt 012 — Início da implementação — **2026-08-31**
 * [x] Prompt 014 — Cadastro de Funcionários — **2026-09-01**
 * [x] Prompt 015 — Saneamento e build Release — **2026-09-01**
+* [x] Prompt 016 — Correção da inicialização do banco — **2026-09-01**
 
 ## Checkpoints
 

@@ -32,9 +32,4 @@ public static class DatabaseProviderFactory
                 throw new NotSupportedException($"Provider '{provider}' nao suportado.");
         }
     }
-
-    public static void EnsureCreated(ChipControlDbContext context)
-    {
-        context.Database.EnsureCreated();
-    }
 }
