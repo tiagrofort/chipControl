@@ -80,4 +80,21 @@ public class UsuarioSistema
     }
 
     public bool PodeAutenticar() => Ativo;
+
+    public void AtualizarDados(string nome, string login, string? email,
+        NivelAcesso nivelAcesso, bool ativo, string? observacoes)
+    {
+        if (string.IsNullOrWhiteSpace(nome))
+            throw new ArgumentException("Nome é obrigatório.", nameof(nome));
+        if (string.IsNullOrWhiteSpace(login))
+            throw new ArgumentException("Login é obrigatório.", nameof(login));
+
+        Nome = nome;
+        Login = login;
+        Email = email;
+        NivelAcesso = nivelAcesso;
+        Ativo = ativo;
+        Observacoes = observacoes;
+        DataAlteracao = DateTime.UtcNow;
+    }
 }

@@ -17,6 +17,7 @@
 * [x] **2026-08-28** — Prompt 011 executado. Fechamento final pré-codificação: revisão estrutural final, UX Design (docs/ux_design/ e docs/ux_design.zip) versionado no Git, modelo de histórico e relação SIMCARD/número fechados, fluxo de troca de números e substituição fechados, formato de importação EXCEL (.xlsx), autenticação e acesso master documentados, banco inicial/futuro definido, relatórios da primeira versão confirmados e projeto congelado para início da codificação. Artefato residual `docs/prompts/002_objetivo_e_escopo.ps1` removido.
 * [x] **2026-08-31** — Prompt 012 executado. Início da implementação real. Solução WPF criada com arquitetura em camadas (Domain, Application, Infrastructure, Persistence, Presentation). SQLite + EF Core 8.0.30. Autenticação com hash BCrypt.Net-Next. Acesso master via #if DEBUG. 26 testes de unidade aprovados. Build completo com sucesso.
 * [x] **2026-09-01** — Prompt 014 executado. Cadastro funcional de Funcionários implementado em todas as camadas (Domain, Application, Infrastructure, Persistence, Presentation.WPF) seguindo o padrão visual do cadastro de Usuários. Migration `20260901121911_AddFuncionarioGerenciamento` criada e aplicada. 24 testes novos adicionados (total 69 testes, todos passando). Build com 0 erros e 0 warnings. Push realizado para `main`.
+* [x] **2026-09-01** — Prompt 015 executado. Saneamento da base (removido diretório órfão `src/Views/`) e configuração da build Release do projeto WPF para `build\Release\`. `.gitignore` atualizado para ignorar a pasta `build/`. Incluído no commit o código válido do Prompt 013 que estava pendente. 69 testes continuam passando. Build Debug e Release com 0 erros e 0 warnings.
 
 ## Checkpoints concluídos
 
@@ -31,6 +32,7 @@
 * [x] Prompt 011 — Fechamento final pré-codificação — **2026-08-28**
 * [x] Prompt 012 — Início da implementação — **2026-08-31**
 * [x] Prompt 014 — Cadastro de Funcionários — **2026-09-01**
+* [x] Prompt 015 — Saneamento e build Release — **2026-09-01**
 
 ## Checkpoints
 

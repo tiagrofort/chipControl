@@ -1,0 +1,109 @@
+<UserControl x:Class="ChipControl.Presentation.WPF.Views.UsuarioGerenciamentoView"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:vm="clr-namespace:ChipControl.Presentation.WPF.ViewModels"
+                 xmlns:conv="clr-namespace:ChipControl.Presentation.WPF.Converters">
+    <UserControl.Resources>
+        <conv:BoolToStatusConverter x:Key="BoolToStatus"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Page Header -->
+        <Border Grid.Row="0" Background="#FFFFFF" BorderBrush="#E1E2E8" BorderThickness="0,0,0,1" Height="64">
+            <DockPanel LastChildFill="True" Margin="24,0">
+                <TextBlock DockPanel.Dock="Left"
+                           FontFamily="Work Sans"
+                           FontSize="20" FontWeight="SemiBold"
+                           Foreground="#004277"
+                           Text="Usuários do Sistema"/>
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button Content="Atualizar"
+                            FontFamily="Work Sans" FontSize="12" FontWeight="Medium"
+                            Foreground="#414750" Background="Transparent"
+                            BorderBrush="#C1C7D2" BorderThickness="1"
+                            Width="84" Height="32" Margin="0,0,8,0"
+                            Click="Refresh_Click"/>
+                    <Button Content="+ Novo"
+                            FontFamily="Work Sans" FontSize="12" FontWeight="SemiBold"
+                            Foreground="#FFFFFF" Background="#005A9E"
+                            BorderBrush="#005A9E" BorderThickness="1"
+                            Width="84" Height="32"
+                            Click="Novo_Click"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- Search Bar -->
+        <Border Grid.Row="1" Background="#FFFFFF" BorderBrush="#E1E2E8" BorderThickness="0,0,0,1" Height="56">
+            <Grid Margin="24,0">
+                <TextBox Text="{Binding TermoBusca, UpdateSourceTrigger=PropertyChanged}"
+                         FontFamily="Work Sans" FontSize="13"
+                         Background="#F2F3FA" BorderBrush="#C1C7D2" BorderThickness="1"
+                         Padding="28,8" VerticalAlignment="Center"/>
+                <TextBlock Text="Buscar por nome, login, e-mail, nível..."
+                           FontFamily="Work Sans" FontSize="11"
+                           Foreground="#727782"
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Margin="36,0"/>
+            </Grid>
+        </Border>
+
+        <!-- Data Grid -->
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <DataGrid x:Name="UsuariosGrid"
+                      ItemsSource="{Binding Usuarios}"
+                      SelectedItem="{Binding UsuarioSelecionado}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      BorderBrush="#C1C7D2" BorderThickness="1"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="None"
+                      RowHeaderWidth="0"
+                      Margin="24,0"
+                      FontFamily="Work Sans" FontSize="13"
+                      Background="#FFFFFF"
+                      CanUserSortColumns="False">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Height" Value="40"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50" SortMemberPath="Id"/>
+                    <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*" SortMemberPath="Nome"/>
+                    <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="140" SortMemberPath="Login"/>
+                    <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="180" SortMemberPath="Email"/>
+                    <DataGridTextColumn Header="Nível" Binding="{Binding NivelAcesso}" Width="120" SortMemberPath="NivelAcesso"/>
+                    <DataGridTextColumn Header="Status" Binding="{Binding Ativo, Converter={StaticResource BoolToStatus}}" Width="90"/>
+                    <DataGridTemplateColumn Header="Ações" Width="120">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Editar"
+                                            FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
+                                            Foreground="#005A9E" Background="Transparent"
+                                            BorderBrush="#C1C7D2" BorderThickness="1"
+                                            Padding="8,4" Margin="0,0,4,0"
+                                            Click="Editar_Click"
+                                            Tag="{Binding}"/>
+                                    <Button Content="{Binding Ativo, Converter={StaticResource BoolToStatus}}"
+                                            FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
+                                            Foreground="#004277" Background="Transparent"
+                                            BorderBrush="#C1C7D2" BorderThickness="1"
+                                            Padding="8,4"
+                                            Click="AlternarAtivo_Click"
+                                            Tag="{Binding}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
