@@ -108,11 +108,23 @@ public class DatabaseInitializer
             using (var checkCmd = conn.CreateCommand())
             {
                 checkCmd.CommandText = "SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name='__EFMigrationsHistory';";
-                var count = Convert.ToInt32(await checkCmd.ExecuteScalarAsync() ?? 0);
-                if (count > 0)
+                var tableExists = Convert.ToInt32(await checkCmd.ExecuteScalarAsync() ?? 0) > 0;
+
+                if (tableExists)
                 {
-                    Log("Tabela __EFMigrationsHistory ja existe.");
-                    return;
+                    // Verifica se a tabela tem registros — se já tiver, está ok
+                    using var countCmd = conn.CreateCommand();
+                    countCmd.CommandText = "SELECT COUNT(*) FROM __EFMigrationsHistory;";
+                    var historyCount = Convert.ToInt32(await countCmd.ExecuteScalarAsync() ?? 0);
+
+                    if (historyCount > 0)
+                    {
+                        Log($"Tabela __EFMigrationsHistory ja existe e tem {historyCount} registro(s). Nada a fazer.");
+                        return;
+                    }
+
+                    Log("AVISO: Tabela __EFMigrationsHistory existe mas esta VAZIA. Banco legado detectado — registrando migrations.");
+                    // Continua abaixo para registrar as migrations nas tabelas já existentes
                 }
             }
 

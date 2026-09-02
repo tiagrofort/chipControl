@@ -1,4 +1,5 @@
-﻿using ChipControl.Application;
+using ChipControl.Application;
+using ChipControl.Application.DTOs;
 using ChipControl.Infrastructure;
 using ChipControl.Infrastructure.Configuration;
 using ChipControl.Infrastructure.Data;
@@ -20,6 +21,7 @@ public partial class App : System.Windows.Application
     protected override async void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        ConfigurarTratamentoGlobalDeExcecoes();
 
         var configPath = DatabaseConfigPaths.GetConfigPath();
 
@@ -43,6 +45,8 @@ public partial class App : System.Windows.Application
             services.AddPersistence(dbConfig);
             services.AddInfrastructure();
             services.AddApplication();
+            services.AddSingleton<Func<UsuarioAutenticadoDto, MainWindow>>(sp =>
+                usuario => new MainWindow(usuario));
             services.AddTransient<LoginWindow>();
             services.AddTransient<DatabaseInitializer>();
 
@@ -69,6 +73,41 @@ public partial class App : System.Windows.Application
     private static void Log(string message)
     {
         Debug.WriteLine($"[ChipControl] {message}");
+    }
+
+    private void ConfigurarTratamentoGlobalDeExcecoes()
+    {
+        DispatcherUnhandledException += (_, args) =>
+        {
+            Log($"[EXCECAO NAO TRATADA no Dispatcher] {args.Exception}");
+            MostrarMensagemAmigavel();
+            args.Handled = true; // Mantem o processo vivo sempre que possivel.
+        };
+
+        AppDomain.CurrentDomain.UnhandledException += (_, args) =>
+            Log($"[EXCECAO NAO TRATADA no AppDomain] {args.ExceptionObject}");
+
+        TaskScheduler.UnobservedTaskException += (_, args) =>
+        {
+            Log($"[EXCECAO NAO TRATADA em Task] {args.Exception}");
+            args.SetObserved();
+        };
+    }
+
+    private static void MostrarMensagemAmigavel()
+    {
+        try
+        {
+            MessageBox.Show(
+                "Nao foi possivel abrir esta tela. O detalhe tecnico foi registrado para diagnostico.",
+                "ChipControl",
+                MessageBoxButton.OK,
+                MessageBoxImage.Warning);
+        }
+        catch
+        {
+            // Aplicacao em finalizacao; nao exibir nada.
+        }
     }
 
     private static async Task CreateDefaultConfigAsync(string configPath)

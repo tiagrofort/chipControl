@@ -1,4 +1,5 @@
 using ChipControl.Application.UseCases;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows;
 
@@ -31,7 +32,9 @@ public partial class LoginWindow : Window
 
             if (result.Sucesso && result.UsuarioAutenticado != null)
             {
-                var mainWindow = new MainWindow(result.UsuarioAutenticado);
+                var factory = App.ServiceProvider?.GetRequiredService<Func<ChipControl.Application.DTOs.UsuarioAutenticadoDto, MainWindow>>()
+                    ?? throw new InvalidOperationException("Factory de MainWindow nao registrada.");
+                var mainWindow = factory(result.UsuarioAutenticado);
                 mainWindow.Show();
                 Close();
             }

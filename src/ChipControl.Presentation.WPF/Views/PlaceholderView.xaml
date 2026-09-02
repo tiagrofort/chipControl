@@ -8,7 +8,7 @@
                        FontFamily="Work Sans"
                        FontSize="13"
                        Foreground="#414750">
-                <Run FontWeight="SemiBold" Text="{Binding Titulo}"/> — em desenvolvimento.
+                <Run FontWeight="SemiBold" Text="{Binding Titulo, Mode=OneWay}"/> — em desenvolvimento.
             </TextBlock>
         </Border>
     </Grid>
