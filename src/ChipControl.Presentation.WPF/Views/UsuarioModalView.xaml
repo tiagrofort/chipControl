@@ -1,7 +1,6 @@
 <Window x:Class="ChipControl.Presentation.WPF.Views.UsuarioModalView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         Title="Usuário" Height="540" Width="480"
         WindowStartupLocation="CenterOwner"
         WindowStyle="None"
@@ -10,14 +9,14 @@
         ResizeMode="NoResize"
         ShowInTaskbar="False"
         Topmost="True">
-    <Border Background="#FFFFFFFF"
-            BorderBrush="#C1C7D2"
+    <Border Background="{StaticResource BrushSurfaceLowest}"
+            BorderBrush="{StaticResource BrushOutlineVariant}"
             BorderThickness="1"
-            CornerRadius="8">
+            CornerRadius="{StaticResource CornerRadiusLg}">
         <Border.Effect>
             <DropShadowEffect Color="#000000" Opacity="0.15" BlurRadius="16" ShadowDepth="0"/>
         </Border.Effect>
-        <Grid Margin="32">
+        <Grid Margin="{StaticResource SpaceLg}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -25,125 +24,80 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0"
-                       FontFamily="Work Sans"
-                       FontSize="18" FontWeight="SemiBold"
-                       Foreground="#191C20"
+                       Style="{StaticResource TypoHeadline}"
                        Text="{Binding TituloModal}"
                        Margin="0,0,0,24"/>
 
             <ScrollViewer Grid.Row="1">
                 <StackPanel>
                     <StackPanel Margin="0,0,0,16">
-                        <Label Content="Nome"
-                               FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                               Foreground="#414750" Margin="0,0,0,4"/>
-                        <TextBox Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged}"
-                                 FontFamily="Work Sans" FontSize="13"
-                                 Height="36"
-                                 Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                 Padding="10,6"/>
+                        <Label Content="Nome" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
 
                     <StackPanel Margin="0,0,0,16">
-                        <Label Content="Nome de Usuário"
-                               FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                               Foreground="#414750" Margin="0,0,0,4"/>
-                        <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"
-                                 FontFamily="Work Sans" FontSize="13"
-                                 Height="36"
-                                 Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                 Padding="10,6"/>
+                        <Label Content="Nome de Usuário" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
 
                     <StackPanel Margin="0,0,0,16" x:Name="SenhaPanel">
-                        <Label Content="Senha"
-                               FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                               Foreground="#414750" Margin="0,0,0,4"/>
-                        <PasswordBox Name="SenhaBox"
-                                     FontFamily="Work Sans" FontSize="13"
-                                     Height="36"
-                                     Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                     Padding="10,6"/>
+                        <Label Content="Senha" Style="{StaticResource FormLabelStyle}"/>
+                        <PasswordBox Name="SenhaBox" Style="{StaticResource PasswordBoxInput}"/>
                         <TextBlock Text="Deixe em branco para manter a senha atual."
-                                   FontFamily="Work Sans" FontSize="10"
-                                   Foreground="#727782"
+                                   Style="{StaticResource TypoLabelSm}"
                                    Margin="0,4,0,0"/>
                     </StackPanel>
 
                     <StackPanel Margin="0,0,0,16">
-                        <Label Content="Confirmar Senha"
-                               FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                               Foreground="#414750" Margin="0,0,0,4"/>
-                        <PasswordBox Name="ConfirmarSenhaBox"
-                                     FontFamily="Work Sans" FontSize="13"
-                                     Height="36"
-                                     Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                     Padding="10,6"/>
+                        <Label Content="Confirmar Senha" Style="{StaticResource FormLabelStyle}"/>
+                        <PasswordBox Name="ConfirmarSenhaBox" Style="{StaticResource PasswordBoxInput}"/>
                     </StackPanel>
 
                     <StackPanel Margin="0,0,0,16">
-                        <Label Content="E-mail"
-                               FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                               Foreground="#414750" Margin="0,0,0,4"/>
-                        <TextBox Text="{Binding Email}"
-                                 FontFamily="Work Sans" FontSize="13"
-                                 Height="36"
-                                 Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                 Padding="10,6"/>
+                        <Label Content="E-mail" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding Email}"/>
                     </StackPanel>
 
                     <Grid Margin="0,0,0,16">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="auto"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Margin="0,0,8,0">
-                            <Label Content="Nível de Acesso"
-                                   FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                                   Foreground="#414750" Margin="0,0,0,4"/>
-                            <ComboBox Name="NivelCombo"
-                                      FontFamily="Work Sans" FontSize="13"
-                                      Height="36"
-                                      Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                      Padding="10,6"/>
+                            <Label Content="Nível de Acesso" Style="{StaticResource FormLabelStyle}"/>
+                            <ComboBox Name="NivelCombo" Style="{StaticResource ComboBoxInput}"/>
                         </StackPanel>
                         <CheckBox Grid.Column="1"
                                   Content="Ativo"
-                                  FontFamily="Work Sans" FontSize="13" FontWeight="Medium"
-                                  Foreground="#191C20"
+                                  FontFamily="{StaticResource FontFamilyWorkSans}"
+                                  FontSize="13" FontWeight="Medium"
+                                  Foreground="{StaticResource BrushOnSurface}"
                                   IsChecked="{Binding Ativo}"
                                   VerticalAlignment="Center"/>
                     </Grid>
 
                     <StackPanel Margin="0,0,0,16">
-                        <Label Content="Observações"
-                               FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                               Foreground="#414750" Margin="0,0,0,4"/>
-                        <TextBox Text="{Binding Observacoes}"
-                                 FontFamily="Work Sans" FontSize="13"
-                                 Height="72"
+                        <Label Content="Observações" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}" Height="72"
+                                 Text="{Binding Observacoes}"
                                  VerticalScrollBarVisibility="Auto"
-                                 Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                 Padding="10,6"
                                  AcceptsReturn="True"
                                  TextWrapping="Wrap"/>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
 
-            <Border Grid.Row="2" BorderBrush="#E1E2E8" BorderThickness="1,0,0,0" Height="56">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
-                    <Button Content="Cancelar"
-                            FontFamily="Work Sans" FontSize="12" FontWeight="Medium"
-                            Foreground="#414750" Background="Transparent"
-                            BorderBrush="#C1C7D2" BorderThickness="1"
-                            Width="84" Height="32" Margin="0,0,8,0"
+            <Border Grid.Row="2" BorderBrush="{StaticResource BrushOutlineVariant}"
+                    BorderThickness="0,1,0,0" Padding="0,12,0,0" Margin="0,16,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Cancelar" Style="{StaticResource ButtonGhost}"
+                            MinWidth="84" Margin="0,0,8,0"
                             Click="Cancelar_Click"/>
-                    <Button Content="Salvar"
-                            FontFamily="Work Sans" FontSize="12" FontWeight="SemiBold"
-                            Foreground="#FFFFFF" Background="#005A9E"
-                            BorderBrush="#005A9E" BorderThickness="1"
-                            Width="84" Height="32"
+                    <Button Content="Salvar" Style="{StaticResource ButtonPrimary}"
+                            MinWidth="84"
                             Click="Salvar_Click"/>
                 </StackPanel>
             </Border>

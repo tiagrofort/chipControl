@@ -9,14 +9,14 @@
         ResizeMode="NoResize"
         ShowInTaskbar="False"
         Topmost="True">
-    <Border Background="#FFFFFFFF"
-            BorderBrush="#C1C7D2"
+    <Border Background="{StaticResource BrushSurfaceLowest}"
+            BorderBrush="{StaticResource BrushOutlineVariant}"
             BorderThickness="1"
-            CornerRadius="8">
+            CornerRadius="{StaticResource CornerRadiusLg}">
         <Border.Effect>
             <DropShadowEffect Color="#000000" Opacity="0.15" BlurRadius="16" ShadowDepth="0"/>
         </Border.Effect>
-        <Grid Margin="32">
+        <Grid Margin="{StaticResource SpaceLg}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
@@ -24,23 +24,16 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0"
-                       FontFamily="Work Sans"
-                       FontSize="18" FontWeight="SemiBold"
-                       Foreground="#191C20"
+                       Style="{StaticResource TypoHeadline}"
                        Text="{Binding TituloModal}"
                        Margin="0,0,0,24"/>
 
             <ScrollViewer Grid.Row="1">
                 <StackPanel>
                     <StackPanel Margin="0,0,0,16">
-                        <Label Content="Nome Completo"
-                               FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                               Foreground="#414750" Margin="0,0,0,4"/>
-                        <TextBox Text="{Binding NomeCompleto, UpdateSourceTrigger=PropertyChanged}"
-                                 FontFamily="Work Sans" FontSize="13"
-                                 Height="36"
-                                 Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                 Padding="10,6"/>
+                        <Label Content="Nome Completo" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding NomeCompleto, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
 
                     <Grid Margin="0,0,0,16">
@@ -49,96 +42,62 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0" Margin="0,0,8,0">
-                            <Label Content="Matrícula"
-                                   FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                                   Foreground="#414750" Margin="0,0,0,4"/>
-                            <TextBox Text="{Binding Matricula}"
-                                     FontFamily="Work Sans" FontSize="13"
-                                     Height="36"
-                                     Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                     Padding="10,6"/>
+                            <Label Content="Matrícula" Style="{StaticResource FormLabelStyle}"/>
+                            <TextBox Style="{StaticResource TextBoxInput}"
+                                     Text="{Binding Matricula}"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1" Margin="8,0,0,0">
-                            <Label Content="Setor"
-                                   FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                                   Foreground="#414750" Margin="0,0,0,4"/>
-                            <TextBox Text="{Binding Setor, UpdateSourceTrigger=PropertyChanged}"
-                                     FontFamily="Work Sans" FontSize="13"
-                                     Height="36"
-                                     Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                     Padding="10,6"/>
+                            <Label Content="Setor" Style="{StaticResource FormLabelStyle}"/>
+                            <TextBox Style="{StaticResource TextBoxInput}"
+                                     Text="{Binding Setor, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </Grid>
 
                     <StackPanel Margin="0,0,0,16">
-                        <Label Content="Cargo"
-                               FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                               Foreground="#414750" Margin="0,0,0,4"/>
-                        <TextBox Text="{Binding Cargo}"
-                                 FontFamily="Work Sans" FontSize="13"
-                                 Height="36"
-                                 Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                 Padding="10,6"/>
+                        <Label Content="Cargo" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding Cargo}"/>
                     </StackPanel>
 
                     <StackPanel Margin="0,0,0,16">
-                        <Label Content="Telefone Pessoal"
-                               FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                               Foreground="#414750" Margin="0,0,0,4"/>
-                        <TextBox Text="{Binding TelefonePessoal}"
-                                 FontFamily="Work Sans" FontSize="13"
-                                 Height="36"
-                                 Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                 Padding="10,6"/>
+                        <Label Content="Telefone Pessoal" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding TelefonePessoal}"/>
                     </StackPanel>
 
                     <StackPanel Margin="0,0,0,16">
-                        <Label Content="E-mail"
-                               FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                               Foreground="#414750" Margin="0,0,0,4"/>
-                        <TextBox Text="{Binding Email}"
-                                 FontFamily="Work Sans" FontSize="13"
-                                 Height="36"
-                                 Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                 Padding="10,6"/>
+                        <Label Content="E-mail" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding Email}"/>
                     </StackPanel>
 
                     <CheckBox Content="Ativo"
-                              FontFamily="Work Sans" FontSize="13" FontWeight="Medium"
-                              Foreground="#191C20"
+                              FontFamily="{StaticResource FontFamilyWorkSans}"
+                              FontSize="13" FontWeight="Medium"
+                              Foreground="{StaticResource BrushOnSurface}"
                               IsChecked="{Binding Ativo}"
                               VerticalAlignment="Center"
                               Margin="0,0,0,16"/>
 
                     <StackPanel Margin="0,0,0,16">
-                        <Label Content="Observações"
-                               FontFamily="Work Sans" FontSize="11" FontWeight="Medium"
-                               Foreground="#414750" Margin="0,0,0,4"/>
-                        <TextBox Text="{Binding Observacoes}"
-                                 FontFamily="Work Sans" FontSize="13"
-                                 Height="72"
+                        <Label Content="Observações" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}" Height="72"
+                                 Text="{Binding Observacoes}"
                                  VerticalScrollBarVisibility="Auto"
-                                 Background="#FFFFFF" BorderBrush="#C1C7D2" BorderThickness="1"
-                                 Padding="10,6"
                                  AcceptsReturn="True"
                                  TextWrapping="Wrap"/>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
 
-            <Border Grid.Row="2" BorderBrush="#E1E2E8" BorderThickness="1,0,0,0" Height="56">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,12,0,0">
-                    <Button Content="Cancelar"
-                            FontFamily="Work Sans" FontSize="12" FontWeight="Medium"
-                            Foreground="#414750" Background="Transparent"
-                            BorderBrush="#C1C7D2" BorderThickness="1"
-                            Width="84" Height="32" Margin="0,0,8,0"
+            <Border Grid.Row="2" BorderBrush="{StaticResource BrushOutlineVariant}"
+                    BorderThickness="0,1,0,0" Padding="0,12,0,0" Margin="0,16,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Cancelar" Style="{StaticResource ButtonGhost}"
+                            MinWidth="84" Margin="0,0,8,0"
                             Click="Cancelar_Click"/>
-                    <Button Content="Salvar"
-                            FontFamily="Work Sans" FontSize="12" FontWeight="SemiBold"
-                            Foreground="#FFFFFF" Background="#005A9E"
-                            BorderBrush="#005A9E" BorderThickness="1"
-                            Width="84" Height="32"
+                    <Button Content="Salvar" Style="{StaticResource ButtonPrimary}"
+                            MinWidth="84"
                             Click="Salvar_Click"/>
                 </StackPanel>
             </Border>

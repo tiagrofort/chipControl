@@ -70,8 +70,14 @@ public class NavegacaoWpfTests : IDisposable
                 }
                 finally
                 {
-                    if (System.Windows.Application.Current is App app)
-                        app.Shutdown();
+                    // Shutdown so pode ser chamado pelo thread que possui o Application.
+                    // Outros testes STA podem ter criado o Application.Current antes,
+                    // o que causaria InvalidOperationException e derrubaria o testhost.
+                    var atual = System.Windows.Application.Current;
+                    if (atual is App appAtual && appAtual.Dispatcher.Thread == Thread.CurrentThread)
+                    {
+                        try { appAtual.Shutdown(); } catch { /* best-effort */ }
+                    }
                 }
             }
         });
@@ -86,10 +92,7 @@ public class NavegacaoWpfTests : IDisposable
 
     private void ExecutarNavegacaoCompleta()
     {
-        if (System.Windows.Application.Current is null)
-        {
-            _ = new App();
-        }
+        GarantirRecursosAplicacao();
 
         var dbConfig = new DatabaseConfig
         {
@@ -165,13 +168,13 @@ public class NavegacaoWpfTests : IDisposable
         Assert.Contains(typeof(FuncionarioGerenciamentoView), tiposVisitados);
 
         // 'Dashboard' nao deve fechar a aplicacao nem mesmo ao re-navegar.
-        var botaoDashboard = botoes.First(b => string.Equals((string)b.Content, "Dashboard", StringComparison.OrdinalIgnoreCase));
+        var botaoDashboard = botoes.First(b => string.Equals(ObterRotulo(b), "Dashboard", StringComparison.OrdinalIgnoreCase));
         botaoDashboard.RaiseEvent(new RoutedEventArgs(Button.ClickEvent, botaoDashboard));
         PumpDispatcher();
         Assert.IsType<DashboardView>(frame.Content);
 
         // SIMCARDs (placeholder) tambem deve permanecer estavel.
-        var botaoSimcards = botoes.First(b => string.Equals((string)b.Content, "SIMCARDs", StringComparison.OrdinalIgnoreCase));
+        var botaoSimcards = botoes.First(b => string.Equals(ObterRotulo(b), "SIMCARDs", StringComparison.OrdinalIgnoreCase));
         botaoSimcards.RaiseEvent(new RoutedEventArgs(Button.ClickEvent, botaoSimcards));
         PumpDispatcher();
         Assert.IsType<PlaceholderView>(frame.Content);
@@ -242,6 +245,22 @@ public class NavegacaoWpfTests : IDisposable
         Dispatcher.PushFrame(frame);
     }
 
+    /// <summary>
+    /// Garante que exista um Application com os recursos do DesignSystem carregados.
+    /// Em producao o Main gerado chama app.InitializeComponent() (que carrega o App.xaml
+    /// e o DesignSystem); nos testes STA precisamos fazer isso explicitamente, pois as
+    /// views resolvem {StaticResource ...} contra os recursos da aplicacao.
+    /// </summary>
+    private static void GarantirRecursosAplicacao()
+    {
+        var app = System.Windows.Application.Current as App;
+        if (app is null)
+            app = new App();
+
+        if (app.Resources.MergedDictionaries.Count == 0)
+            app.InitializeComponent();
+    }
+
     private static void ExecutarEmSta(Action action)
     {
         Exception? excecao = null;
@@ -249,6 +268,7 @@ public class NavegacaoWpfTests : IDisposable
         {
             try
             {
+                GarantirRecursosAplicacao();
                 action();
             }
             catch (Exception ex)
@@ -279,5 +299,30 @@ public class NavegacaoWpfTests : IDisposable
             for (var i = 0; i < count; i++)
                 pilha.Push(VisualTreeHelper.GetChild(atual, i));
         }
+    }
+
+    /// <summary>
+    /// Extrai o rotulo textual de um item de menu. Os itens do Stitch sao
+    /// compostos por StackPanel com icone (Path) + texto (TextBlock), portanto
+    /// o Content nao e mais uma string simples.
+    /// </summary>
+    private static string ObterRotulo(Button botao)
+    {
+        if (botao.Content is string texto) return texto;
+
+        var pilha = new Stack<DependencyObject>();
+        pilha.Push(botao);
+        while (pilha.Count > 0)
+        {
+            var atual = pilha.Pop();
+            if (atual is TextBlock tb && !string.IsNullOrWhiteSpace(tb.Text))
+                return tb.Text;
+
+            var count = VisualTreeHelper.GetChildrenCount(atual);
+            for (var i = 0; i < count; i++)
+                pilha.Push(VisualTreeHelper.GetChild(atual, i));
+        }
+
+        return string.Empty;
     }
 }

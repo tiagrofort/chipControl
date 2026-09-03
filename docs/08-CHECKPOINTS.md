@@ -19,6 +19,8 @@
 * [x] **2026-09-01** — Prompt 014 executado. Cadastro funcional de Funcionários implementado em todas as camadas (Domain, Application, Infrastructure, Persistence, Presentation.WPF) seguindo o padrão visual do cadastro de Usuários. Migration `20260901121911_AddFuncionarioGerenciamento` criada e aplicada. 24 testes novos adicionados (total 69 testes, todos passando). Build com 0 erros e 0 warnings. Push realizado para `main`.
 * [x] **2026-09-01** — Prompt 015 executado. Saneamento da base (removido diretório órfão `src/Views/`) e configuração da build Release do projeto WPF para `build\Release\`. `.gitignore` atualizado para ignorar a pasta `build/`. Incluído no commit o código válido do Prompt 013 que estava pendente. 69 testes continuam passando. Build Debug e Release com 0 erros e 0 warnings.
 * [x] **2026-09-01** — Prompt 016 executado. Corrigida a inicialização do banco. Removido `EnsureCreated` (incompatível com Migrations). `DatabaseInitializer` migrado para `Infrastructure` e reescrito usando exclusivamente `Database.MigrateAsync()`. Adicionada recuperação para banco legado (tabelas sem `__EFMigrationsHistory`). Adicionada proteção contra inicialização concorrente. 11 novos testes (total 80 passando). Validação real de primeira/segunda execução na Release. Mensagem amigável em caso de erro. Build Debug e Release com 0 erros e 0 warnings.
+* [x] **2026-09-02** — Prompt 017 executado. Corrigido o encerramento silencioso ao navegar pelo menu: causa raiz era binding TwoWay em propriedade somente leitura (`PlaceholderView.Titulo`). Navegação via `Frame` padronizada; `MainWindow` criada por factory DI `Func<UsuarioAutenticadoDto, MainWindow>`; tratamento global de exceções com logging e mensagem amigável. 4 novos testes de navegação STA (total 84 passando). Build Debug e Release com 0 erros e 0 warnings.
+* [x] **2026-09-03** — Prompt 018 executado. UI WPF alinhada ao padrão visual do Google Stitch. Criado o Design System centralizado `Resources/DesignSystem.xaml` (cores, tipografia Work Sans com fallback, espaçamentos, raios, ícones vetoriais, botões, campos, DataGrid, card, status pill, nav). MainWindow (sidebar com ícones/estado selecionado, header com saudação), Dashboard (cards de indicadores sem dados inventados), Placeholder, UsuarioGerenciamento, UsuarioModal, FuncionarioGerenciamento e FuncionarioModal migrados para o design system. Login conferido contra a referência. 84 testes passando. Build Debug e Release com 0 erros e 0 warnings.
 
 ## Checkpoints concluídos
 
@@ -35,6 +37,8 @@
 * [x] Prompt 014 — Cadastro de Funcionários — **2026-09-01**
 * [x] Prompt 015 — Saneamento e build Release — **2026-09-01**
 * [x] Prompt 016 — Correção da inicialização do banco — **2026-09-01**
+* [x] Prompt 017 — Correção da navegação WPF — **2026-09-02**
+* [x] Prompt 018 — Adequação da UX/UI ao padrão Stitch — **2026-09-03**
 
 ## Checkpoints
 
