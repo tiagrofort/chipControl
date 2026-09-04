@@ -167,6 +167,7 @@ public class NavegacaoWpfTests : IDisposable
         Assert.Contains(typeof(PlaceholderView), tiposVisitados);
         Assert.Contains(typeof(SimcardGerenciamentoView), tiposVisitados);
         Assert.Contains(typeof(FuncionarioGerenciamentoView), tiposVisitados);
+        Assert.Contains(typeof(OperadoraGerenciamentoView), tiposVisitados);
 
         // 'Dashboard' nao deve fechar a aplicacao nem mesmo ao re-navegar.
         var botaoDashboard = botoes.First(b => string.Equals(ObterRotulo(b), "Dashboard", StringComparison.OrdinalIgnoreCase));
@@ -179,6 +180,12 @@ public class NavegacaoWpfTests : IDisposable
         botaoSimcards.RaiseEvent(new RoutedEventArgs(Button.ClickEvent, botaoSimcards));
         PumpDispatcher();
         Assert.IsType<SimcardGerenciamentoView>(frame.Content);
+
+        // Operadoras deve navegar para OperadoraGerenciamentoView.
+        var botaoOperadoras = botoes.First(b => string.Equals(ObterRotulo(b), "Operadoras", StringComparison.OrdinalIgnoreCase));
+        botaoOperadoras.RaiseEvent(new RoutedEventArgs(Button.ClickEvent, botaoOperadoras));
+        PumpDispatcher();
+        Assert.IsType<OperadoraGerenciamentoView>(frame.Content);
 
         // Fecha a janela para retomar o appraisal da aplicacao.
         mainWindow.Close();
@@ -231,6 +238,7 @@ public class NavegacaoWpfTests : IDisposable
             _ = sp.GetRequiredService<Application.UseCases.IUsuarioUseCase>();
             _ = sp.GetRequiredService<Application.UseCases.IAutenticarUsuarioUseCase>();
             _ = sp.GetRequiredService<Application.UseCases.ISimcardUseCase>();
+            _ = sp.GetRequiredService<Application.UseCases.IOperadoraUseCase>();
         }
         catch (Exception ex)
         {

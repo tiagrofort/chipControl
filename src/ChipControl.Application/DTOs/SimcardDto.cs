@@ -60,9 +60,3 @@ public class EditarSimcardDto
     public bool Ativo { get; set; }
 }
 
-/// <summary>Operadora mínima para seleção no cadastro de SIMCARDs.</summary>
-public class OperadoraDto
-{
-    public int Id { get; set; }
-    public string Nome { get; set; } = string.Empty;
-}

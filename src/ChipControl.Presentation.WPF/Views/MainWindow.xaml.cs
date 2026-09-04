@@ -30,7 +30,7 @@ public partial class MainWindow : Window
     private void Dashboard_Click(object sender, RoutedEventArgs e) => Navegar(new DashboardView(), "Dashboard", NavDashboard);
     private void Simcards_Click(object sender, RoutedEventArgs e) => Navegar(new SimcardGerenciamentoView(), "SIMCARDs", NavSimcards);
     private void Funcionarios_Click(object sender, RoutedEventArgs e) => Navegar(new FuncionarioGerenciamentoView(), "FuncionÃ¡rios", NavFuncionarios);
-    private void Operadoras_Click(object sender, RoutedEventArgs e) => Navegar(new PlaceholderView("Operadoras"), "Operadoras", NavOperadoras);
+    private void Operadoras_Click(object sender, RoutedEventArgs e) => Navegar(new OperadoraGerenciamentoView(), "Operadoras", NavOperadoras);
     private void Aparelhos_Click(object sender, RoutedEventArgs e) => Navegar(new PlaceholderView("Aparelhos"), "Aparelhos", NavAparelhos);
     private void TrocaNumeros_Click(object sender, RoutedEventArgs e) => Navegar(new PlaceholderView("Troca de NÃºmeros"), "Troca de NÃºmeros", NavTrocaNumeros);
     private void Substituicao_Click(object sender, RoutedEventArgs e) => Navegar(new PlaceholderView("SubstituiÃ§Ã£o"), "SubstituiÃ§Ã£o", NavSubstituicao);

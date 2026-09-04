@@ -12,6 +12,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IUsuarioRepository, UsuarioRepository>();
         services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
         services.AddScoped<ISimcardRepository, SimcardRepository>();
+        services.AddScoped<IOperadoraRepository, OperadoraRepository>();
         services.AddSingleton<IHashService, HashService>();
 
         return services;

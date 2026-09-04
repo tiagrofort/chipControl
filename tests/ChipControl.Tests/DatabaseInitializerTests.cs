@@ -1,4 +1,4 @@
-﻿using ChipControl.Application;
+using ChipControl.Application;
 using ChipControl.Domain.Entities;
 using ChipControl.Domain.Enums;
 using ChipControl.Domain.Interfaces;
@@ -288,7 +288,7 @@ public class DatabaseInitializerTests : IDisposable
         Assert.Single(tables, t => t == "__EFMigrationsHistory");
 
         var applied = await ctx.Database.GetAppliedMigrationsAsync();
-        Assert.Equal(4, applied.Count());
+        Assert.Equal(5, applied.Count());
     }
 
     [Fact]

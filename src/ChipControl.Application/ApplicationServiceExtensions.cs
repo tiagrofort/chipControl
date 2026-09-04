@@ -12,6 +12,7 @@ public static class ApplicationServiceExtensions
         services.AddScoped<IUsuarioUseCase, UsuarioUseCase>();
         services.AddScoped<IFuncionarioUseCase, FuncionarioUseCase>();
         services.AddScoped<ISimcardUseCase, SimcardUseCase>();
+        services.AddScoped<IOperadoraUseCase, OperadoraUseCase>();
 
         return services;
     }

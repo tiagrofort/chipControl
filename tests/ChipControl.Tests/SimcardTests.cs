@@ -30,7 +30,7 @@ public class SimcardTests
         _context.Database.EnsureCreated();
 
         // Seed operadora
-        var op = Operadora.Create("Claro", true);
+        var op = Operadora.Create("Claro");
         var opProp = typeof(Operadora).GetProperty("Id");
         opProp?.SetValue(op, 1);
         _context.Operadoras.Add(op);
@@ -302,7 +302,7 @@ public class SimcardTests
     [Fact]
     public async Task Repository_ListarOperadorasAsync_SomenteAtivas()
     {
-        var op2 = Operadora.Create("Vivo", false);
+        var op2 = Operadora.Create("Vivo", ativo: false);
         _context.Operadoras.Add(op2);
         _context.SaveChanges();
 

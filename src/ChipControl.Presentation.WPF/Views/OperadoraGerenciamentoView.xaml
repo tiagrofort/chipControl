@@ -1,0 +1,92 @@
+<UserControl x:Class="ChipControl.Presentation.WPF.Views.OperadoraGerenciamentoView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="{StaticResource SpacePage}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Action Bar -->
+        <Border Grid.Row="0" Style="{StaticResource CardBorder}" Padding="16" Margin="0,0,0,16"
+                CornerRadius="{StaticResource CornerRadiusDefault}">
+            <DockPanel LastChildFill="True">
+                <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                    <Button Content="Atualizar" Style="{StaticResource ButtonGhost}"
+                            Click="Refresh_Click" Margin="0,0,8,0"/>
+                    <Button Content="+ Nova Operadora" Style="{StaticResource ButtonPrimary}"
+                            Click="Novo_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <Path Data="{StaticResource IconSearch}" Width="16" Height="16" Stretch="Uniform"
+                          Fill="{StaticResource BrushOnSurfaceVariant}"
+                          VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <TextBox Width="280"
+                             Style="{StaticResource TextBoxSearch}"
+                             VerticalAlignment="Center"
+                             Text="{Binding TermoBusca, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+            </DockPanel>
+        </Border>
+
+        <!-- Data Grid -->
+        <DataGrid Grid.Row="1" x:Name="OperadorasGrid"
+                  ItemsSource="{Binding Operadoras}"
+                  SelectedItem="{Binding OperadoraSelecionada}"
+                  Style="{StaticResource DataGridChipControl}"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60" SortMemberPath="Id"/>
+                <DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="*" SortMemberPath="Nome"/>
+                <DataGridTextColumn Header="Código" Binding="{Binding Codigo}" Width="100" SortMemberPath="Codigo"/>
+                <DataGridTextColumn Header="CNPJ" Binding="{Binding Cnpj}" Width="130" SortMemberPath="Cnpj"/>
+                <DataGridTextColumn Header="Telefone" Binding="{Binding Telefone}" Width="120" SortMemberPath="Telefone"/>
+                <DataGridTextColumn Header="E-mail" Binding="{Binding Email}" Width="180" SortMemberPath="Email"/>
+                <DataGridTemplateColumn Header="Status" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Border HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <Border.Style>
+                                    <Style TargetType="Border" BasedOn="{StaticResource StatusPill}">
+                                        <Setter Property="Background" Value="{StaticResource BrushSuccessBg}"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Ativo}" Value="False">
+                                                <Setter Property="Background" Value="{StaticResource BrushErrorContainer}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                                <TextBlock FontSize="11">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock" BasedOn="{StaticResource TypoLabelSm}">
+                                            <Setter Property="Text" Value="Ativo"/>
+                                            <Setter Property="Foreground" Value="{StaticResource BrushSuccessFg}"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Ativo}" Value="False">
+                                                    <Setter Property="Text" Value="Inativo"/>
+                                                    <Setter Property="Foreground" Value="{StaticResource BrushOnErrorContainer}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </Border>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Ações" Width="190">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Editar" Style="{StaticResource ButtonAction}"
+                                        Margin="0,0,6,0" Click="Editar_Click" Tag="{Binding}"/>
+                                <Button Content="Ativar/Desativar" Style="{StaticResource ButtonAction}"
+                                        Click="AlternarAtivo_Click" Tag="{Binding}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
