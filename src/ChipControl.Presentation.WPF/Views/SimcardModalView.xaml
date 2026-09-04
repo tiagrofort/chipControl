@@ -1,0 +1,152 @@
+﻿<Window x:Class="ChipControl.Presentation.WPF.Views.SimcardModalView"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:vm="clr-namespace:ChipControl.Presentation.WPF.ViewModels"
+         Title="SIMCARD" Height="640" Width="520"
+         WindowStartupLocation="CenterOwner"
+         WindowStyle="None"
+         AllowsTransparency="True"
+         Background="Transparent"
+         ResizeMode="NoResize"
+         ShowInTaskbar="False"
+         Topmost="True">
+    <Border Background="{StaticResource BrushSurfaceLowest}"
+            BorderBrush="{StaticResource BrushOutlineVariant}"
+            BorderThickness="1"
+            CornerRadius="{StaticResource CornerRadiusLg}">
+        <Border.Effect>
+            <DropShadowEffect Color="#000000" Opacity="0.15" BlurRadius="16" ShadowDepth="0"/>
+        </Border.Effect>
+        <Grid Margin="{StaticResource SpaceLg}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Style="{StaticResource TypoHeadline}"
+                       Text="{Binding TituloModal}"
+                       Margin="0,0,0,24"/>
+
+            <ScrollViewer Grid.Row="1">
+                <StackPanel>
+                    <!-- Operadora -->
+                    <StackPanel Margin="0,0,0,16">
+                        <Label Content="Operadora" Style="{StaticResource FormLabelStyle}"/>
+                        <ComboBox Style="{StaticResource ComboBoxInput}"
+                                  ItemsSource="{Binding Operadoras}"
+                                  SelectedItem="{Binding OperadoraSelecionada}"
+                                  DisplayMemberPath="Nome"
+                                  IsEditable="False"/>
+                    </StackPanel>
+
+                    <!-- Identificação Chip -->
+                    <StackPanel Margin="0,0,0,16">
+                        <Label Content="Identificação do Chip" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding IdentificacaoChip, UpdateSourceTrigger=PropertyChanged}"
+                                 CharacterCasing="Upper"/>
+                    </StackPanel>
+
+                    <!-- ICCID -->
+                    <StackPanel Margin="0,0,0,16">
+                        <Label Content="ICCID" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding Iccid, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <!-- DDD -->
+                    <StackPanel Margin="0,0,0,16">
+                        <Label Content="DDD" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding Ddd, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <!-- Plano/Tipo -->
+                    <StackPanel Margin="0,0,0,16">
+                        <Label Content="Plano / Tipo de Linha" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding PlanoTipo, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+
+                    <!-- Tem minutagem + quantidade -->
+                    <StackPanel Margin="0,0,0,16">
+                        <CheckBox Content="Possui minutagem"
+                                  FontFamily="{StaticResource FontFamilyWorkSans}"
+                                  FontSize="13" FontWeight="Medium"
+                                  Foreground="{StaticResource BrushOnSurface}"
+                                  IsChecked="{Binding TemMinutagem}"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,0,8"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding QuantidadeMinutosTexto, UpdateSourceTrigger=PropertyChanged}"
+                                 IsEnabled="{Binding TemMinutagem}"
+                                 MaxWidth="120"/>
+                    </StackPanel>
+
+                    <!-- Tem internet + quantidade -->
+                    <StackPanel Margin="0,0,0,16">
+                        <CheckBox Content="Possui internet"
+                                  FontFamily="{StaticResource FontFamilyWorkSans}"
+                                  FontSize="13" FontWeight="Medium"
+                                  Foreground="{StaticResource BrushOnSurface}"
+                                  IsChecked="{Binding TemInternet}"
+                                  VerticalAlignment="Center"
+                                  Margin="0,0,0,8"/>
+                        <TextBox Style="{StaticResource TextBoxInput}"
+                                 Text="{Binding QuantidadeInternetTexto, UpdateSourceTrigger=PropertyChanged}"
+                                 IsEnabled="{Binding TemInternet}"
+                                 MaxWidth="120"/>
+                    </StackPanel>
+
+                    <!-- Data de aquisição -->
+                    <StackPanel Margin="0,0,0,16">
+                        <Label Content="Data de Aquisição" Style="{StaticResource FormLabelStyle}"/>
+                        <DatePicker Style="{StaticResource DatePickerInput}"
+                                    SelectedDate="{Binding DataAquisicao}"/>
+                    </StackPanel>
+
+                    <!-- Data de ativação -->
+                    <StackPanel Margin="0,0,0,16">
+                        <Label Content="Data de Ativação" Style="{StaticResource FormLabelStyle}"/>
+                        <DatePicker Style="{StaticResource DatePickerInput}"
+                                    SelectedDate="{Binding DataAtivacao}"/>
+                    </StackPanel>
+
+                    <!-- Ativo -->
+                    <CheckBox Content="Ativo"
+                              FontFamily="{StaticResource FontFamilyWorkSans}"
+                              FontSize="13" FontWeight="Medium"
+                              Foreground="{StaticResource BrushOnSurface}"
+                              IsChecked="{Binding Ativo}"
+                              VerticalAlignment="Center"
+                              Margin="0,0,0,16"/>
+
+                    <!-- Observações -->
+                    <StackPanel Margin="0,0,0,16">
+                        <Label Content="Observações" Style="{StaticResource FormLabelStyle}"/>
+                        <TextBox Style="{StaticResource TextBoxInput}" Height="72"
+                                 Text="{Binding Observacoes}"
+                                 VerticalScrollBarVisibility="Auto"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+
+            <!-- Footer -->
+            <Border Grid.Row="2" BorderBrush="{StaticResource BrushOutlineVariant}"
+                    BorderThickness="0,1,0,0" Padding="0,12,0,0" Margin="0,16,0,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Cancelar" Style="{StaticResource ButtonGhost}"
+                            MinWidth="84" Margin="0,0,8,0"
+                            Click="Cancelar_Click"/>
+                    <Button Content="Salvar" Style="{StaticResource ButtonPrimary}"
+                            MinWidth="84"
+                            Click="Salvar_Click"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

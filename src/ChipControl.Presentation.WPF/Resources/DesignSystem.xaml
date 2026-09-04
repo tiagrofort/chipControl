@@ -386,6 +386,18 @@
                 </ControlTemplate.Triggers>
             </ControlTemplate></Setter.Value></Setter>
     </Style>
+    <!-- DatePicker (mesmo visual dos campos) -->
+    <Style x:Key="DatePickerInput" TargetType="DatePicker">
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilyWorkSans}"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Foreground" Value="{StaticResource BrushOnSurface}"/>
+        <Setter Property="Background" Value="{StaticResource BrushSurfaceLowest}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BrushOutlineVariant}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Height" Value="36"/>
+        <Setter Property="Padding" Value="10,6"/>
+    </Style>
+
 
     <!-- ============================================================
          DATAGRID
@@ -559,3 +571,4 @@
         <Setter Property="HorizontalAlignment" Value="Left"/>
     </Style>
 </ResourceDictionary>
+

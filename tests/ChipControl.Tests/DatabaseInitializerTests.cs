@@ -1,4 +1,4 @@
-using ChipControl.Application;
+﻿using ChipControl.Application;
 using ChipControl.Domain.Entities;
 using ChipControl.Domain.Enums;
 using ChipControl.Domain.Interfaces;
@@ -81,6 +81,7 @@ public class DatabaseInitializerTests : IDisposable
         Assert.NotEmpty(applied);
         Assert.Contains("20260831124346_InitialCreate", applied);
         Assert.Contains("20260901121911_AddFuncionarioGerenciamento", applied);
+        Assert.Contains("20260903133708_AddSimcardGerenciamento", applied);
 
         var repo = scope.ServiceProvider.GetRequiredService<IUsuarioRepository>();
         var admin = await repo.BuscarPorLoginAsync("admin");
@@ -104,6 +105,7 @@ public class DatabaseInitializerTests : IDisposable
             var usuariosCount1 = await CountUsuariosAsync(ctx);
             Assert.Contains("UsuariosSistema", tables1);
             Assert.Contains("Funcionarios", tables1);
+            Assert.Contains("Simcards", tables1);
             Assert.Equal(1, usuariosCount1);
         }
 
@@ -282,10 +284,11 @@ public class DatabaseInitializerTests : IDisposable
         var tables = await GetTableNamesAsync(ctx);
         Assert.Single(tables, t => t == "UsuariosSistema");
         Assert.Single(tables, t => t == "Funcionarios");
+        Assert.Single(tables, t => t == "Simcards");
         Assert.Single(tables, t => t == "__EFMigrationsHistory");
 
         var applied = await ctx.Database.GetAppliedMigrationsAsync();
-        Assert.Equal(3, applied.Count());
+        Assert.Equal(4, applied.Count());
     }
 
     [Fact]
@@ -370,3 +373,5 @@ public class DatabaseInitializerTests : IDisposable
         finally { conn.Close(); }
     }
 }
+
+

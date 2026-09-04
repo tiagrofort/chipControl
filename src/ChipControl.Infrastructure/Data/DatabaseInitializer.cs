@@ -145,7 +145,8 @@ public class DatabaseInitializer
             {
                 "20260831124346_InitialCreate",
                 "20260831142129_AddUsuarioGerenciamento",
-                "20260901121911_AddFuncionarioGerenciamento"
+                "20260901121911_AddFuncionarioGerenciamento",
+                "20260903133708_AddSimcardGerenciamento"
             };
 
             using var createCmd = conn.CreateCommand();

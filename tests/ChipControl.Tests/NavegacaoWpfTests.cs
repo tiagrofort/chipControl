@@ -165,6 +165,7 @@ public class NavegacaoWpfTests : IDisposable
 
         Assert.Contains(typeof(DashboardView), tiposVisitados);
         Assert.Contains(typeof(PlaceholderView), tiposVisitados);
+        Assert.Contains(typeof(SimcardGerenciamentoView), tiposVisitados);
         Assert.Contains(typeof(FuncionarioGerenciamentoView), tiposVisitados);
 
         // 'Dashboard' nao deve fechar a aplicacao nem mesmo ao re-navegar.
@@ -173,11 +174,11 @@ public class NavegacaoWpfTests : IDisposable
         PumpDispatcher();
         Assert.IsType<DashboardView>(frame.Content);
 
-        // SIMCARDs (placeholder) tambem deve permanecer estavel.
+        // SIMCARDs deve navegar para SimcardGerenciamentoView.
         var botaoSimcards = botoes.First(b => string.Equals(ObterRotulo(b), "SIMCARDs", StringComparison.OrdinalIgnoreCase));
         botaoSimcards.RaiseEvent(new RoutedEventArgs(Button.ClickEvent, botaoSimcards));
         PumpDispatcher();
-        Assert.IsType<PlaceholderView>(frame.Content);
+        Assert.IsType<SimcardGerenciamentoView>(frame.Content);
 
         // Fecha a janela para retomar o appraisal da aplicacao.
         mainWindow.Close();
@@ -229,6 +230,7 @@ public class NavegacaoWpfTests : IDisposable
             _ = sp.GetRequiredService<Application.UseCases.IFuncionarioUseCase>();
             _ = sp.GetRequiredService<Application.UseCases.IUsuarioUseCase>();
             _ = sp.GetRequiredService<Application.UseCases.IAutenticarUsuarioUseCase>();
+            _ = sp.GetRequiredService<Application.UseCases.ISimcardUseCase>();
         }
         catch (Exception ex)
         {
